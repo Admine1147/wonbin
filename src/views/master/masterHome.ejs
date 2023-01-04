@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+      integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+      integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="/css/master/masterHome.css" />
+    <script src="/js/master/main.js" defer></script>
+    <title>마스터 홈페이지</title>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-custom navbar-mainbg">
+      <a class="navbar-brand navbar-logo" href="/masters">10-10-gaza</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <i class="fas fa-bars text-white"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <div class="hori-selector">
+            <div class="left"></div>
+            <div class="right"></div>
+          </div>
+          <li class="nav-item active">
+            <a class="nav-link" href="/masters"><i class="far fa-address-book"></i>요청 목록</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/masters/laundryCare"><i class="fas fa-tachometer-alt"></i>내 세탁물 관리</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/masters/reviews"><i class="far fa-clone"></i>내 세탁소 리뷰보기</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/main"><i class="far fa-clone"></i>로그 아웃</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4" id="order-list">
+      <!-- <div class="col">
+        <div class="card h-100">
+          <div class="order-img">
+            <img
+              src="https://image.onstove.com/850x0/d3kxs6kpbh59hp.cloudfront.net/community/COMMUNITY/8eb7a6a8e9124b8d9915907a2585b98f/3b6b80769f8743b9ac853e428634f00c_1558658665.jpg"
+              class="card-img-top"
+              alt="..."
+            />
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">닉네임</h5>
+            <p class="card-text">코멘트</p>
+            <a class="btn btn-primary" onclick="">수락하기</a>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">${createdAt}</small>
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </body>
+  <script>
+    $(document).ready(function () {
+      $.ajax({
+        type: 'GET',
+        url: '/api/orders',
+        data: {},
+        success: function (response) {
+          console.log('세탁물 요청 목록 연결됨');
+          let rows = response['order_list'];
+          for (let i = 0; i < rows.length; i++) {
+            let order_id = rows[i].order_id;
+            let nickname = rows[i].nickname;
+            let address = rows[i].address;
+            let comment = rows[i].comment;
+            let createdAt = rows[i].createdAt;
+
+            let temp_html = `<div class="col">
+                              <div class="card h-100">
+                                <div class="order-img">
+                                  <img src="https://image.onstove.com/850x0/d3kxs6kpbh59hp.cloudfront.net/community/COMMUNITY/8eb7a6a8e9124b8d9915907a2585b98f/3b6b80769f8743b9ac853e428634f00c_1558658665.jpg" class="card-img-top" alt="..." />
+                                </div>
+                                  <div class="card-body">
+                                <h5 class="card-title">${nickname}</h5>
+                                <p class="card-text">${comment}</p>
+                                <p class="card-text"> 요청자 주소 : ${address}</p>
+                                <a class="btn btn-primary" onclick="order_accept(${order_id})">수락하기</a>
+                              </div>
+                              <div class="card-footer">
+                                <small class="text-muted">${createdAt}</small>
+                              </div>
+                            </div>
+                          </div>`;
+            $('#order-list').append(temp_html);
+          }
+        },
+      });
+    });
+
+    const order_accept = function (order_id) {
+      $.ajax({
+        type: 'PUT',
+        url: `/api/orders/${order_id}`,
+        data: {},
+        success: function (response) {
+          if (response.success === false) return alert('이미 할 일이 있으니 할 일이나 마저 하십쇼. 인간');
+
+          alert('수락 완료');
+          location.reload();
+        },
+      });
+    };
+  </script>
+</html>

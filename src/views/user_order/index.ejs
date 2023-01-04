@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/js/user_order/index.js" defer></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="page-name" style="display:none"><%= ejsName %></div>
+    <%- include('nav_bar.ejs') %>
+    <%- include(ejsName) %>
+
+    <script>
+        const text = '<%= ejsName%>';   // 이렇게 하면 js 파일에서 사용 가능.
+    </script>
+</body>
+
+<script>
+</script>
+</html>
