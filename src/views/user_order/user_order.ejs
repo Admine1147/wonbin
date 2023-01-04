@@ -9,48 +9,21 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 		crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="/css/user_order/user_order.css">
+	<script src="/js/user_order/user_order.js" defer></script>
     <title>Document</title>
-    <style>			
-			.wrap-form {
-				width: 700px;
-				margin: auto;
-				margin-top: 30px;
-				margin-bottom: 200px;
-			}
-			.intro-label {
-				font-size: 20px;
-				margin-top:40px;
-			}
-			.form-write {
-				margin-top: 0px;
-				margin-left: 20px;
-			}
-			.sub-script {
-				margin: 0;
-				margin-left: 20px;
-				font-size: 13px;
-				color: gray;
-			}
-			.small-top-margin {
-				margin-top:15px;
-			}
-			.middle-top-margin {
-				margin-top:70px;
-			}
-			.img-type-margin {
-				margin-bottom:30px;
-			}
-			.img-show {
-				max-width: 500px;
-				margin-bottom: 5px;
-			}
-    </style>
 </head>
 
 
 <body>
     <div class="wrap-form">
         <form class="row g-3">
+			<div class="intro-label point-label">
+				<label for="form-check-input" class="form-label">- 현재 남은 포인트 -</label>
+				<% const point = Number(userInfo.point); %>
+				<% const pointResult = point.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') %>
+				<div class="user-point"><%= pointResult %></div>
+			</div>
 			<div class="intro-label">
 				<label for="form-check-input" class="form-label">1. 세탁물 종류 선택</label>
 			</div>
@@ -73,19 +46,19 @@
 			</div>
 			<div class="col-md-6 form-write small-top-margin">
 				<label for="inputEmail4" class="form-label">닉네임</label>
-				<input type="text" class="form-control" id="nickname">
+				<input type="text" class="form-control" id="nickname" value="<%= userInfo.nickname%>" >
             </div>
             <div class="col-md-6 form-write small-top-margin">
 				<label for="inputEmail4" class="form-label">전화번호</label>
-				<input type="text" class="form-control" id="phone-number">
+				<input type="text" class="form-control" id="phone-number" value="<%= userInfo.phonenumber%>">
             </div>
 			<div class="col-md-6 form-write small-top-margin">
 				<label for="inputEmail4" class="form-label">이메일</label>
-				<input type="text" class="form-control" id="email">
+				<input type="text" class="form-control" id="email" value="<%= userInfo.email%>">
             </div>
 			<div class="col-md-6 form-write small-top-margin">
 				<label for="inputEmail4" class="form-label">주소</label>
-				<input type="text" class="form-control" id="address">
+				<input type="text" class="form-control" id="address" value="<%= userInfo.address%>">
             </div>
 			<div class="intro-label">
 				<label for="form-check-input" class="form-label">3. 사진</label>
@@ -115,134 +88,5 @@
     </div>
 
 
-
-	<script>
-		$(document).ready(function () {
-			const imgSel = document.querySelectorAll(".img-file");
-			for (let i = 1; i <= imgSel.length; i++) {
-				imgSel[i-1].addEventListener("change", function (event) {
-					let files = event.target.files;
-
-					if (files.length >= 1) {
-						insertImageDate(i, files[0])
-					}
-
-					if (!files.length) {
-						const imgShow = document.querySelector(`#img-${i}-show`);
-						imgShow.removeAttribute('src');
-					}
-				})
-			}
-
-			async function insertImageDate (imgNum, file) {
-				const imgShow = document.querySelector(`#img-${imgNum}-show`);
-
-				const reader = new FileReader();
-
-				reader.addEventListener('load', function (event) {
-					imgShow.src = reader.result;
-				});
-				reader.readAsDataURL(file);
-			}
-
-			const submitBtn = document.querySelector("#submitRequestBtn");
-			submitBtn.addEventListener("click", (event) => {
-				event.preventDefault();
-			})
-		});
-
-		const submitRequest = async () => {	
-			const lifeLaundry = document.querySelector("#life-laundry").checked;
-			const individualLaundry = document.querySelector("#individual-laundry").checked;
-			const nickname = document.querySelector("#nickname").value;
-			const phoneNumber = document.querySelector("#phone-number").value;
-			const email = document.querySelector("#email").value;
-			const address = document.querySelector("#address").value;
-			const comment = document.querySelector("#request").value;
-
-			if (!lifeLaundry && !individualLaundry) {
-				alert("세탁물 종류를 선택해 주세요");
-				return
-			}
-			if (!nickname) {
-				alert("닉네임을 입력해 주세요");
-				return
-			}
-			if (!phoneNumber || phoneNumber.length < 11 || phoneNumber.length > 11) {
-				alert("휴대폰 번호를 정확히 입력해 주세요");
-				return 
-			}
-			if (!email || !email.includes("@") || !email.includes(".")) {
-				alert("이메일을 정확히 입력해 주세요");
-				return 
-			}
-			if (!address) {
-				alert("주소를 정확히 입력해 주세요");
-				return
-			}
-
-			const orderData = {
-				life_laundry: lifeLaundry,
-				individual_laundry: individualLaundry,
-				nickname: nickname,
-				phonenumber: phoneNumber,
-				email: email,
-				address: address,
-				comment: comment
-			};
-
-			$.ajax({
-				type: "POST",
-				url: '/api/order',
-				data: {result: JSON.stringify(orderData)},
-				success: function (response) {
-					console.log(response.success);
-					if (response.success) {
-						console.log(response.data)
-						console.log(response.data.order_id);
-						submitRequestimg(response.data.order_id, response.data.user_id);
-					}
-				}
-        	});
-			
-		};
-
-		const submitRequestimg = async (orderId, userId) => {
-			const imgTags = document.querySelectorAll(".img-file");
-			const order_id = orderId;
-			const user_id = userId;
-			let formData = new FormData();
-
-			formData.append("order_id", order_id);
-			formData.append("user_id", user_id);
-
-			for (let i = 1; i <= imgTags.length; i++) {
-				const imgFile = imgTags[i-1].files;
-				if (i === 1 && !imgFile.length) {
-					return;
-				}
-				if (imgFile.length >= 1) {
-					await formData.append(`imgFile_${i}`, imgFile[0]);
-				}
-			}
-
-			$.ajax({
-				type: "POST",
-                enctype: 'multipart/form-data',
-                url: '/api/order/img',
-                data: formData,
-                processData: false,       // 기본 값은 true. false 면 데이터를 query string 으로 설정 하지 않아. 즉 file 을 보내려면 false 로.
-                contentType: false,       // 이게 true 로 되어 있으면 데이터를 string 으로 바꾼 다고.
-				cache: false,
-				success: function (response) {
-					console.log("무사히 응답을 받음.")
-					console.log(response.success);
-					location.href="/users/orders";
-				}
-			})
-		}
-
-
-	</script>
 </body>
 </html>
