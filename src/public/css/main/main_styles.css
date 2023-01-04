@@ -1,0 +1,1726 @@
+.loader {
+  position: absolute;
+  width: 100vw;
+  top: 0vh;
+  left: 84vw;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.loader h1 {
+  margin: 0;
+  padding: 0;
+  text-transform: uppercase;
+  font-size: 10em;
+  color: rgba(0, 0, 0, 0.05);
+  background-image: url(https://image.ibb.co/ciSeac/image.png);
+  background-repeat: repeat-x;
+  -webkit-background-clip: text;
+  animation: animate 15s linear infinite;
+}
+
+@keyframes animate {
+  0% {
+    background-position: left 0px top 80px;
+  }
+  40% {
+    background-position: left 800px top -50px;
+  }
+  80% {
+    background-position: left 1800px top -50px;
+  }
+  100% {
+    background-position: left 2400px top 80px;
+  }
+}
+
+.container {
+  position: relative;
+  width: 160px;
+  height: 335px;
+  background: linear-gradient(to bottom, #96c7cc 0%, #c3ddd8 30%, #c3ddd8 100%);
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.gradientContainer {
+  margin-top: 95px;
+  height: 300px;
+  overflow: hidden;
+  background: linear-gradient(to bottom, #c3e5e5, #0d3f53);
+  position: absolute;
+  z-index: 200;
+}
+
+.overlay {
+  width: 100%;
+  height: 240px;
+  position: absolute;
+}
+.overlay.one {
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0) 10%,
+    #0b4558 100%
+  );
+  z-index: 100;
+}
+
+.gradient {
+  margin-top: -100px;
+  width: 620px;
+  height: 400px;
+  transform: translateX(-50px) rotate(20deg);
+  animation-name: gradient;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  animation-fill-mode: forwards;
+  animation-timing-function: linear;
+  transform-style: preserve-3d;
+}
+
+@keyframes gradient {
+  0% {
+    transform: translateX(-50px) rotate(20deg);
+  }
+  100% {
+    transform: translateX(-379px) rotate(20deg);
+  }
+}
+.ray1 {
+  height: 400px;
+  display: inline-block;
+  animation-name: blinkRay;
+  animation-duration: 2s;
+  animation-delay: 4s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  opacity: 1;
+}
+
+.ray2 {
+  height: 400px;
+  display: inline-block;
+  animation-name: blinkRay;
+  animation-duration: 4s;
+  animation-delay: 3s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  opacity: 1;
+}
+
+.ray3 {
+  height: 400px;
+  display: inline-block;
+  animation-name: blinkRay;
+  animation-duration: 4s;
+  animation-delay: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  opacity: 1;
+}
+
+.ray4 {
+  height: 400px;
+  display: inline-block;
+  animation-name: blinkRay;
+  animation-duration: 3s;
+  animation-delay: 3s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  opacity: 1;
+}
+
+.ray5 {
+  height: 400px;
+  display: inline-block;
+  animation-name: blinkRay;
+  animation-duration: 4s;
+  animation-delay: 1s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  opacity: 1;
+}
+
+.ray6 {
+  height: 400px;
+  display: inline-block;
+  animation-name: blinkRay;
+  animation-duration: 2s;
+  animation-delay: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  opacity: 1;
+}
+
+.ray7 {
+  height: 400px;
+  display: inline-block;
+  animation-name: blinkRay;
+  animation-duration: 4s;
+  animation-delay: 4s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  opacity: 1;
+}
+
+.ray8 {
+  height: 400px;
+  display: inline-block;
+  animation-name: blinkRay;
+  animation-duration: 2s;
+  animation-delay: 4s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  opacity: 1;
+}
+
+.ray9 {
+  height: 400px;
+  display: inline-block;
+  animation-name: blinkRay;
+  animation-duration: 4s;
+  animation-delay: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  opacity: 1;
+}
+
+.ray10 {
+  height: 400px;
+  display: inline-block;
+  animation-name: blinkRay;
+  animation-duration: 2s;
+  animation-delay: 4s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  opacity: 1;
+}
+
+.ray11 {
+  height: 400px;
+  display: inline-block;
+  animation-name: blinkRay;
+  animation-duration: 1s;
+  animation-delay: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  opacity: 1;
+}
+
+.ray12 {
+  height: 400px;
+  display: inline-block;
+  animation-name: blinkRay;
+  animation-duration: 4s;
+  animation-delay: 3s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  opacity: 1;
+}
+
+.ray13 {
+  height: 400px;
+  display: inline-block;
+  animation-name: blinkRay;
+  animation-duration: 1s;
+  animation-delay: 4s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  opacity: 1;
+}
+
+.ray14 {
+  height: 400px;
+  display: inline-block;
+  animation-name: blinkRay;
+  animation-duration: 3s;
+  animation-delay: 3s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  opacity: 1;
+}
+
+.ray15 {
+  height: 400px;
+  display: inline-block;
+  animation-name: blinkRay;
+  animation-duration: 4s;
+  animation-delay: 3s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  opacity: 1;
+}
+
+.ray16 {
+  height: 400px;
+  display: inline-block;
+  animation-name: blinkRay;
+  animation-duration: 2s;
+  animation-delay: 3s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  opacity: 1;
+}
+
+.ray17 {
+  height: 400px;
+  display: inline-block;
+  animation-name: blinkRay;
+  animation-duration: 3s;
+  animation-delay: 1s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  opacity: 1;
+}
+
+.ray18 {
+  height: 400px;
+  display: inline-block;
+  animation-name: blinkRay;
+  animation-duration: 4s;
+  animation-delay: 4s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  opacity: 1;
+}
+
+.ray19 {
+  height: 400px;
+  display: inline-block;
+  animation-name: blinkRay;
+  animation-duration: 2s;
+  animation-delay: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  opacity: 1;
+}
+
+.ray20 {
+  height: 400px;
+  display: inline-block;
+  animation-name: blinkRay;
+  animation-duration: 2s;
+  animation-delay: 4s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  opacity: 1;
+}
+
+.ray21 {
+  height: 400px;
+  display: inline-block;
+  animation-name: blinkRay;
+  animation-duration: 3s;
+  animation-delay: 1s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  opacity: 1;
+}
+
+.ray22 {
+  height: 400px;
+  display: inline-block;
+  animation-name: blinkRay;
+  animation-duration: 3s;
+  animation-delay: 3s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  opacity: 1;
+}
+
+.ray23 {
+  height: 400px;
+  display: inline-block;
+  animation-name: blinkRay;
+  animation-duration: 1s;
+  animation-delay: 3s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  opacity: 1;
+}
+
+.ray24 {
+  height: 400px;
+  display: inline-block;
+  animation-name: blinkRay;
+  animation-duration: 4s;
+  animation-delay: 1s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  opacity: 1;
+}
+
+.ray25 {
+  height: 400px;
+  display: inline-block;
+  animation-name: blinkRay;
+  animation-duration: 1s;
+  animation-delay: 3s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  opacity: 1;
+}
+
+.ray26 {
+  height: 400px;
+  display: inline-block;
+  animation-name: blinkRay;
+  animation-duration: 3s;
+  animation-delay: 4s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  opacity: 1;
+}
+
+@keyframes blinkRay {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.4;
+  }
+}
+.ray1,
+.ray14,
+.ray27 {
+  width: 20px;
+  background: linear-gradient(
+    to bottom,
+    #afe0e4 0%,
+    #afe0e4 40%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.ray2,
+.ray15,
+.ray28 {
+  width: 20px;
+  background: linear-gradient(
+    to bottom,
+    #c0e6e9 0%,
+    #c0e6e9 30%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.ray3,
+.ray16,
+.ray29 {
+  width: 15px;
+  background: linear-gradient(
+    to bottom,
+    #84cdd4 0%,
+    #84cdd4 20%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.ray4,
+.ray17,
+.ray30 {
+  width: 5px;
+  background: linear-gradient(
+    to bottom,
+    #7ec9d1 0%,
+    #7ec9d1 10%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.ray5,
+.ray18,
+.ray31 {
+  width: 10px;
+  background: linear-gradient(
+    to bottom,
+    #97d6dc 0%,
+    #97d6dc 40%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.ray6,
+.ray19,
+.ray32 {
+  width: 10px;
+  background: linear-gradient(
+    to bottom,
+    #aedee2 0%,
+    #aedee2 30%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.ray7,
+.ray20,
+.ray33 {
+  width: 10px;
+  background: linear-gradient(
+    to bottom,
+    #96d3d8 0%,
+    #96d3d8 20%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.ray8,
+.ray21,
+.ray34 {
+  width: 5px;
+  background: linear-gradient(
+    to bottom,
+    #9cd7dd 0%,
+    #9cd7dd 40%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.ray9,
+.ray22,
+.ray35 {
+  width: 25px;
+  background: linear-gradient(
+    to bottom,
+    #7ecbd3 0%,
+    #7ecbd3 60%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.ray10,
+.ray23,
+.ray36 {
+  width: 10px;
+  background: linear-gradient(
+    to bottom,
+    #97d6dc 0%,
+    #97d6dc 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.ray11,
+.ray24,
+.ray37 {
+  width: 10px;
+  background: linear-gradient(
+    to bottom,
+    #aedee2 0%,
+    #aedee2 40%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.ray12,
+.ray25,
+.ray38 {
+  width: 10px;
+  background: linear-gradient(
+    to bottom,
+    #96d3d8 0%,
+    #96d3d8 20%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.ray13,
+.ray26,
+.ray39 {
+  width: 5px;
+  background: linear-gradient(
+    to bottom,
+    #9cd7dd 0%,
+    #9cd7dd 10%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.cPos {
+  position: relative;
+  top: 30%;
+  left: calc(50% - 80px);
+  z-index: 9;
+  transform: translateY(0) scale(1);
+  animation-name: sunset;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+}
+
+@keyframes sunset {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    transform: translateY(10px) scale(0.9);
+  }
+}
+.cc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circle {
+  position: absolute;
+  background: #fbfef9;
+  border-radius: 50%;
+}
+.circle.one {
+  width: 160px;
+  height: 160px;
+  opacity: 0.2;
+}
+.circle.two {
+  width: 130px;
+  height: 130px;
+  opacity: 0.2;
+}
+.circle.three {
+  width: 100px;
+  height: 100px;
+  opacity: 0.2;
+}
+.circle.four {
+  width: 70px;
+  height: 70px;
+}
+
+.rocks {
+  position: relative;
+  z-index: 2000;
+}
+.rocks .rock {
+  position: absolute;
+}
+.rocks .rock.one {
+  top: 280px;
+  left: -30px;
+  width: 98px;
+  height: 50px;
+  clip-path: polygon(0 0, 56% 10%, 80% 100%, 0% 100%);
+  background: #02364b;
+  z-index: 2000;
+}
+.rocks .rock.two {
+  top: 295px;
+  left: 30px;
+  width: 95px;
+  height: 60px;
+  clip-path: polygon(0 15%, 20% 10%, 100% 70%, 100% 100%, 0% 100%);
+  background: #063b51;
+  z-index: 1000;
+}
+.rocks .rock.three {
+  top: 300px;
+  left: 50px;
+  width: 95px;
+  height: 60px;
+  clip-path: polygon(0 60%, 60% 20%, 100% 12%, 100% 100%, 0 100%);
+  background: #002c44;
+  z-index: 3000;
+}
+.rocks .rock.four {
+  top: 255px;
+  left: 125px;
+  width: 60px;
+  height: 65px;
+  clip-path: polygon(0 100%, 20% 45%, 100% 12%, 100% 100%, 0 100%);
+  background: #023a51;
+  z-index: 4000;
+}
+
+.bubbleContainer {
+  width: 100%;
+  height: 100px;
+  bottom: 0;
+  position: absolute;
+  animation-name: bubblesIn;
+  animation-duration: 2s;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+}
+
+@keyframes bubblesIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.bubbleX1 {
+  display: inline-block;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #fff;
+  transform: translateX(0);
+  animation-name: bubbleX1;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.bubbleY1 {
+  display: inline-block;
+  position: absolute;
+  z-index: 5000;
+  top: 92px;
+  left: 142px;
+  animation-name: bubbleY;
+  animation-duration: 1.25s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  transform: translateY(0);
+  opacity: 0.6;
+  animation-delay: 1s;
+}
+
+@keyframes bubbleX1 {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-random(15) px);
+  }
+  40% {
+    transform: translateX(1px);
+  }
+  60% {
+    transform: translateX(-random(15) px);
+  }
+  80% {
+    transform: translateX(3px);
+  }
+  100% {
+    transform: translateX(-random(15) px);
+  }
+}
+@keyframes bubbleY {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-30px);
+  }
+  100% {
+    transform: translateY(-60px);
+    opacity: 0;
+  }
+}
+.bubbleX2 {
+  display: inline-block;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #fff;
+  transform: translateX(0);
+  animation-name: bubbleX2;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.bubbleY2 {
+  display: inline-block;
+  position: absolute;
+  z-index: 5000;
+  top: 92px;
+  left: 37px;
+  animation-name: bubbleY;
+  animation-duration: 1.25s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  transform: translateY(0);
+  opacity: 0.6;
+  animation-delay: 3s;
+}
+
+@keyframes bubbleX2 {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-random(15) px);
+  }
+  40% {
+    transform: translateX(11px);
+  }
+  60% {
+    transform: translateX(-random(15) px);
+  }
+  80% {
+    transform: translateX(4px);
+  }
+  100% {
+    transform: translateX(-random(15) px);
+  }
+}
+@keyframes bubbleY {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-30px);
+  }
+  100% {
+    transform: translateY(-60px);
+    opacity: 0;
+  }
+}
+.bubbleX3 {
+  display: inline-block;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: #fff;
+  transform: translateX(0);
+  animation-name: bubbleX3;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.bubbleY3 {
+  display: inline-block;
+  position: absolute;
+  z-index: 5000;
+  top: 18px;
+  left: 29px;
+  animation-name: bubbleY;
+  animation-duration: 1.25s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  transform: translateY(0);
+  opacity: 0.6;
+  animation-delay: 2s;
+}
+
+@keyframes bubbleX3 {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-random(15) px);
+  }
+  40% {
+    transform: translateX(13px);
+  }
+  60% {
+    transform: translateX(-random(15) px);
+  }
+  80% {
+    transform: translateX(11px);
+  }
+  100% {
+    transform: translateX(-random(15) px);
+  }
+}
+@keyframes bubbleY {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-30px);
+  }
+  100% {
+    transform: translateY(-60px);
+    opacity: 0;
+  }
+}
+.bubbleX4 {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #fff;
+  transform: translateX(0);
+  animation-name: bubbleX4;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.bubbleY4 {
+  display: inline-block;
+  position: absolute;
+  z-index: 5000;
+  top: 77px;
+  left: 143px;
+  animation-name: bubbleY;
+  animation-duration: 1.25s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  transform: translateY(0);
+  opacity: 0.6;
+  animation-delay: 1s;
+}
+
+@keyframes bubbleX4 {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-random(15) px);
+  }
+  40% {
+    transform: translateX(13px);
+  }
+  60% {
+    transform: translateX(-random(15) px);
+  }
+  80% {
+    transform: translateX(1px);
+  }
+  100% {
+    transform: translateX(-random(15) px);
+  }
+}
+@keyframes bubbleY {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-30px);
+  }
+  100% {
+    transform: translateY(-60px);
+    opacity: 0;
+  }
+}
+.bubbleX5 {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #fff;
+  transform: translateX(0);
+  animation-name: bubbleX5;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.bubbleY5 {
+  display: inline-block;
+  position: absolute;
+  z-index: 5000;
+  top: 53px;
+  left: 32px;
+  animation-name: bubbleY;
+  animation-duration: 1.25s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  transform: translateY(0);
+  opacity: 0.6;
+  animation-delay: 2s;
+}
+
+@keyframes bubbleX5 {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-random(15) px);
+  }
+  40% {
+    transform: translateX(15px);
+  }
+  60% {
+    transform: translateX(-random(15) px);
+  }
+  80% {
+    transform: translateX(3px);
+  }
+  100% {
+    transform: translateX(-random(15) px);
+  }
+}
+@keyframes bubbleY {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-30px);
+  }
+  100% {
+    transform: translateY(-60px);
+    opacity: 0;
+  }
+}
+.bubbleX6 {
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #fff;
+  transform: translateX(0);
+  animation-name: bubbleX6;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.bubbleY6 {
+  display: inline-block;
+  position: absolute;
+  z-index: 5000;
+  top: 35px;
+  left: 105px;
+  animation-name: bubbleY;
+  animation-duration: 1.25s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  transform: translateY(0);
+  opacity: 0.6;
+  animation-delay: 2s;
+}
+
+@keyframes bubbleX6 {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-random(15) px);
+  }
+  40% {
+    transform: translateX(6px);
+  }
+  60% {
+    transform: translateX(-random(15) px);
+  }
+  80% {
+    transform: translateX(14px);
+  }
+  100% {
+    transform: translateX(-random(15) px);
+  }
+}
+@keyframes bubbleY {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-30px);
+  }
+  100% {
+    transform: translateY(-60px);
+    opacity: 0;
+  }
+}
+.bubbleX7 {
+  display: inline-block;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #fff;
+  transform: translateX(0);
+  animation-name: bubbleX7;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.bubbleY7 {
+  display: inline-block;
+  position: absolute;
+  z-index: 5000;
+  top: 86px;
+  left: 7px;
+  animation-name: bubbleY;
+  animation-duration: 1.25s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  transform: translateY(0);
+  opacity: 0.6;
+  animation-delay: 1s;
+}
+
+@keyframes bubbleX7 {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-random(15) px);
+  }
+  40% {
+    transform: translateX(6px);
+  }
+  60% {
+    transform: translateX(-random(15) px);
+  }
+  80% {
+    transform: translateX(3px);
+  }
+  100% {
+    transform: translateX(-random(15) px);
+  }
+}
+@keyframes bubbleY {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-30px);
+  }
+  100% {
+    transform: translateY(-60px);
+    opacity: 0;
+  }
+}
+.bubbleX8 {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #fff;
+  transform: translateX(0);
+  animation-name: bubbleX8;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.bubbleY8 {
+  display: inline-block;
+  position: absolute;
+  z-index: 5000;
+  top: 53px;
+  left: 69px;
+  animation-name: bubbleY;
+  animation-duration: 1.25s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  transform: translateY(0);
+  opacity: 0.6;
+  animation-delay: 3s;
+}
+
+@keyframes bubbleX8 {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-random(15) px);
+  }
+  40% {
+    transform: translateX(13px);
+  }
+  60% {
+    transform: translateX(-random(15) px);
+  }
+  80% {
+    transform: translateX(1px);
+  }
+  100% {
+    transform: translateX(-random(15) px);
+  }
+}
+@keyframes bubbleY {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-30px);
+  }
+  100% {
+    transform: translateY(-60px);
+    opacity: 0;
+  }
+}
+.bubbleX9 {
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #fff;
+  transform: translateX(0);
+  animation-name: bubbleX9;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.bubbleY9 {
+  display: inline-block;
+  position: absolute;
+  z-index: 5000;
+  top: 70px;
+  left: 90px;
+  animation-name: bubbleY;
+  animation-duration: 1.25s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  transform: translateY(0);
+  opacity: 0.6;
+  animation-delay: 2s;
+}
+
+@keyframes bubbleX9 {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-random(15) px);
+  }
+  40% {
+    transform: translateX(6px);
+  }
+  60% {
+    transform: translateX(-random(15) px);
+  }
+  80% {
+    transform: translateX(1px);
+  }
+  100% {
+    transform: translateX(-random(15) px);
+  }
+}
+@keyframes bubbleY {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-30px);
+  }
+  100% {
+    transform: translateY(-60px);
+    opacity: 0;
+  }
+}
+.bubbleX10 {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #fff;
+  transform: translateX(0);
+  animation-name: bubbleX10;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.bubbleY10 {
+  display: inline-block;
+  position: absolute;
+  z-index: 5000;
+  top: 24px;
+  left: 6px;
+  animation-name: bubbleY;
+  animation-duration: 1.25s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  transform: translateY(0);
+  opacity: 0.6;
+  animation-delay: 3s;
+}
+
+@keyframes bubbleX10 {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-random(15) px);
+  }
+  40% {
+    transform: translateX(10px);
+  }
+  60% {
+    transform: translateX(-random(15) px);
+  }
+  80% {
+    transform: translateX(6px);
+  }
+  100% {
+    transform: translateX(-random(15) px);
+  }
+}
+@keyframes bubbleY {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-30px);
+  }
+  100% {
+    transform: translateY(-60px);
+    opacity: 0;
+  }
+}
+.triangleContainer {
+  margin-top: 92px;
+  width: 1000px;
+  position: absolute;
+  z-index: 1000;
+  transform: translateX(-250px);
+  animation-name: triangles;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.triangleBar {
+  width: 1000px;
+  height: 6px;
+  position: absolute;
+  z-index: 1500;
+  background: linear-gradient(to bottom, #e7f9f3, #f5fff9);
+}
+
+.triangle {
+  width: 50px;
+  height: 10px;
+  display: inline-block;
+  background: #edf7e7;
+  clip-path: polygon(0% 0%, 100% 0%, 50% 100%, 0% 0%);
+}
+
+@keyframes triangles {
+  0% {
+    transform: translateX(-250px);
+  }
+  100% {
+    transform: translateX(-500px);
+  }
+}
+.whaleContainer {
+  position: relative;
+  transform: translateX(0);
+  animation-name: whaleTranslate;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  z-index: 7000;
+}
+
+@keyframes whaleTranslate {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(380px);
+  }
+}
+.whalePos {
+  position: absolute;
+  z-index: 1000;
+}
+.whalePos.size1 {
+  top: 150px;
+  left: -210px;
+}
+.whalePos.size2 {
+  top: 100px;
+  left: -280px;
+}
+.whalePos.size3 {
+  top: 120px;
+  left: -140px;
+}
+.whalePos.size4 {
+  top: 190px;
+  left: -310px;
+}
+
+.whaleRotate {
+  position: relative;
+  width: 245px;
+  height: 110px;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+.whaleRotate.size1 {
+  transform: rotate(0) scale(0.35);
+  animation-name: whaleMovementXLarge;
+}
+.whaleRotate.size2 {
+  transform: rotate(0) scale(0.25);
+  animation-name: whaleMovementLarge;
+}
+.whaleRotate.size3 {
+  transform: rotate(0) scale(0.15);
+  animation-name: whaleMovementMedium;
+}
+.whaleRotate.size4 {
+  transform: rotate(0) scale(0.1);
+  animation-name: whaleMovementSmall;
+}
+
+@keyframes whaleMovementXLarge {
+  0% {
+    transform: rotate(0) scale(0.35);
+  }
+  100% {
+    transform: rotate(10deg) scale(0.35);
+  }
+}
+@keyframes whaleMovementLarge {
+  0% {
+    transform: rotate(0) scale(0.25);
+  }
+  100% {
+    transform: rotate(10deg) scale(0.25);
+  }
+}
+@keyframes whaleMovementMedium {
+  0% {
+    transform: rotate(0) scale(0.15);
+  }
+  100% {
+    transform: rotate(10deg) scale(0.15);
+  }
+}
+@keyframes whaleMovementSmall {
+  0% {
+    transform: rotate(0) scale(0.1);
+  }
+  100% {
+    transform: rotate(10deg) scale(0.1);
+  }
+}
+.whale {
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  background: radial-gradient(
+    at 40% 20%,
+    #95d6df 0%,
+    #95d6df 35%,
+    #6db3c2 35%,
+    #6db3c2 60%,
+    #6db3c2 70%,
+    #407a8b 70%,
+    #407a8b 100%
+  );
+  clip-path: polygon(
+    15% 0%,
+    18.5% 20%,
+    19% 37%,
+    27% 46.5%,
+    33% 46.5%,
+    42.5% 37%,
+    43% 26.5%,
+    50.5% 28.5%,
+    65.5% 17%,
+    88.5% 12.5%,
+    97.5% 22.5%,
+    100% 49.5%,
+    97% 65.5%,
+    89.5% 81.5%,
+    64.5% 86.5%,
+    43.5% 80%,
+    23% 59.5%,
+    15.5% 41.5%,
+    8% 40%,
+    1.5% 28.5%,
+    6.5% 25%,
+    12.5% 26.5%,
+    12% 14%
+  );
+}
+
+.fin {
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  z-index: 5000;
+  width: 50px;
+  height: 30px;
+  background: #407a8b;
+  transform-origin: center top;
+  clip-path: polygon(30% 50%, 60% 0, 100% 0%, 80% 60%, 60% 80%, 0 100%);
+  animation-name: fin;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+}
+
+@keyframes fin {
+  0% {
+    transform: rotate3d(0, 0, 0, 0deg);
+  }
+  100% {
+    transform: rotate3d(1, 1, 1, 30deg);
+  }
+}
+html,
+body {
+  overflow: hidden;
+}
+
+body {
+  background: #e6ffff;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.h1,
+h1 {
+  font-size: 2.5rem;
+  position: absolute;
+  top: 20vh;
+}
+
+.base {
+  position: absolute;
+  bottom: 20vh;
+  display: grid;
+  grid-template-columns: repeat(30, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  width: 210px;
+  height: 70px;
+  border-radius: 3px;
+  color: #fff;
+  background: #9dcef3;
+  font: 700 24px sans-serif;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07),
+    0 4px 8px rgba(0, 0, 0, 0.07), 0 8px 16px rgba(0, 0, 0, 0.07),
+    0 16px 32px rgba(0, 0, 0, 0.07), 0 32px 64px rgba(0, 0, 0, 0.07);
+  cursor: pointer;
+}
+
+.base2 {
+  position: absolute;
+  bottom: 28vh;
+  display: grid;
+  grid-template-columns: repeat(30, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  width: 210px;
+  height: 70px;
+  border-radius: 3px;
+  color: #fff;
+  background: #9dcef3;
+  font: 700 24px sans-serif;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07),
+    0 4px 8px rgba(0, 0, 0, 0.07), 0 8px 16px rgba(0, 0, 0, 0.07),
+    0 16px 32px rgba(0, 0, 0, 0.07), 0 32px 64px rgba(0, 0, 0, 0.07);
+  cursor: pointer;
+}
+
+i {
+  width: calc(210px / 30);
+  height: calc(70px / 10);
+}
+
+i:nth-child(n + 1):nth-child(-n + 30):hover ~ .bg {
+  --y: 10%;
+}
+
+i:nth-child(n + 31):nth-child(-n + 60):hover ~ .bg {
+  --y: 20%;
+}
+
+i:nth-child(n + 61):nth-child(-n + 90):hover ~ .bg {
+  --y: 30%;
+}
+
+i:nth-child(n + 91):nth-child(-n + 120):hover ~ .bg {
+  --y: 40%;
+}
+
+i:nth-child(n + 121):nth-child(-n + 150):hover ~ .bg {
+  --y: 50%;
+}
+
+i:nth-child(n + 151):nth-child(-n + 180):hover ~ .bg {
+  --y: 60%;
+}
+
+i:nth-child(n + 181):nth-child(-n + 210):hover ~ .bg {
+  --y: 70%;
+}
+
+i:nth-child(n + 211):nth-child(-n + 240):hover ~ .bg {
+  --y: 80%;
+}
+
+i:nth-child(n + 241):nth-child(-n + 270):hover ~ .bg {
+  --y: 90%;
+}
+
+i:nth-child(n + 271):nth-child(-n + 300):hover ~ .bg {
+  --y: 100%;
+}
+
+i:nth-child(30n + 1):hover ~ .bg {
+  --x: 3.3333333333%;
+}
+
+i:nth-child(30n + 2):hover ~ .bg {
+  --x: 6.6666666667%;
+}
+
+i:nth-child(30n + 3):hover ~ .bg {
+  --x: 10%;
+}
+
+i:nth-child(30n + 4):hover ~ .bg {
+  --x: 13.3333333333%;
+}
+
+i:nth-child(30n + 5):hover ~ .bg {
+  --x: 16.6666666667%;
+}
+
+i:nth-child(30n + 6):hover ~ .bg {
+  --x: 20%;
+}
+
+i:nth-child(30n + 7):hover ~ .bg {
+  --x: 23.3333333333%;
+}
+
+i:nth-child(30n + 8):hover ~ .bg {
+  --x: 26.6666666667%;
+}
+
+i:nth-child(30n + 9):hover ~ .bg {
+  --x: 30%;
+}
+
+i:nth-child(30n + 10):hover ~ .bg {
+  --x: 33.3333333333%;
+}
+
+i:nth-child(30n + 11):hover ~ .bg {
+  --x: 36.6666666667%;
+}
+
+i:nth-child(30n + 12):hover ~ .bg {
+  --x: 40%;
+}
+
+i:nth-child(30n + 13):hover ~ .bg {
+  --x: 43.3333333333%;
+}
+
+i:nth-child(30n + 14):hover ~ .bg {
+  --x: 46.6666666667%;
+}
+
+i:nth-child(30n + 15):hover ~ .bg {
+  --x: 50%;
+}
+
+i:nth-child(30n + 16):hover ~ .bg {
+  --x: 53.3333333333%;
+}
+
+i:nth-child(30n + 17):hover ~ .bg {
+  --x: 56.6666666667%;
+}
+
+i:nth-child(30n + 18):hover ~ .bg {
+  --x: 60%;
+}
+
+i:nth-child(30n + 19):hover ~ .bg {
+  --x: 63.3333333333%;
+}
+
+i:nth-child(30n + 20):hover ~ .bg {
+  --x: 66.6666666667%;
+}
+
+i:nth-child(30n + 21):hover ~ .bg {
+  --x: 70%;
+}
+
+i:nth-child(30n + 22):hover ~ .bg {
+  --x: 73.3333333333%;
+}
+
+i:nth-child(30n + 23):hover ~ .bg {
+  --x: 76.6666666667%;
+}
+
+i:nth-child(30n + 24):hover ~ .bg {
+  --x: 80%;
+}
+
+i:nth-child(30n + 25):hover ~ .bg {
+  --x: 83.3333333333%;
+}
+
+i:nth-child(30n + 26):hover ~ .bg {
+  --x: 86.6666666667%;
+}
+
+i:nth-child(30n + 27):hover ~ .bg {
+  --x: 90%;
+}
+
+i:nth-child(30n + 28):hover ~ .bg {
+  --x: 93.3333333333%;
+}
+
+i:nth-child(30n + 29):hover ~ .bg {
+  --x: 96.6666666667%;
+}
+
+i:nth-child(30n + 30):hover ~ .bg {
+  --x: 100%;
+}
+
+.bg {
+  position: absolute;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  display: grid;
+  place-content: center;
+  width: 100%;
+  height: 100%;
+  grid-column: 1 / span 30;
+  grid-row: 1 / span 10;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+i:hover ~ .bg {
+  background: radial-gradient(
+    circle 110px at var(--x) var(--y),
+    rgba(169, 242, 136, 0.4),
+    rgba(169, 242, 136, 0)
+  );
+}
