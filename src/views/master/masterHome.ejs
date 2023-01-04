@@ -30,6 +30,7 @@
     <script src="/js/master/main.js" defer></script>
     <title>마스터 홈페이지</title>
   </head>
+
   <body>
     <nav class="navbar navbar-expand-custom navbar-mainbg">
       <a class="navbar-brand navbar-logo" href="/masters">10-10-gaza</a>
@@ -49,73 +50,88 @@
             <div class="right"></div>
           </div>
           <li class="nav-item active">
-            <a class="nav-link" href="/masters"
-              ><i class="far fa-address-book"></i>요청 목록</a
-            >
+            <a class="nav-link" href="/masters"><i class="far fa-address-book"></i>요청 목록</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/masters/laundryCare"
-              ><i class="fas fa-tachometer-alt"></i>내 세탁물 관리</a
-            >
+            <a class="nav-link" href="/masters/laundryCare"><i class="fas fa-tachometer-alt"></i>내 세탁물 관리</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/masters/reviews"
-              ><i class="far fa-clone"></i>내 세탁소 리뷰보기</a
-            >
+            <a class="nav-link" href="/masters/reviews"><i class="far fa-clone"></i>내 세탁소 리뷰보기</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/main"
-              ><i class="far fa-clone"></i>로그 아웃</a
-            >
+            <a class="nav-link" href="/main"><i class="far fa-clone"></i>로그 아웃</a>
           </li>
         </ul>
       </div>
     </nav>
-    <div class="row row-cols-1 row-cols-md-3 g-4 order-list">
-      <div class="col">
+
+    <div class="row row-cols-1 row-cols-md-3 g-4" id="order-list">
+      <!-- <div class="col">
         <div class="card h-100">
-          <img src="..." class="card-img-top" alt="..." />
+          <div class="order-img">
+            <img
+              src="https://image.onstove.com/850x0/d3kxs6kpbh59hp.cloudfront.net/community/COMMUNITY/8eb7a6a8e9124b8d9915907a2585b98f/3b6b80769f8743b9ac853e428634f00c_1558658665.jpg"
+              class="card-img-top"
+              alt="..."
+            />
+          </div>
           <div class="card-body">
-            <h5 class="card-title">세탁 요청자 닉네임</h5>
-            <p class="card-text">요청 사항</p>
-            <a href="#" class="btn btn-primary">수락하기</a>
+            <h5 class="card-title">닉네임</h5>
+            <p class="card-text">코멘트</p>
+            <a class="btn btn-primary" onclick="">수락하기</a>
           </div>
           <div class="card-footer">
-            <small class="text-muted">CreatedAt</small>
+            <small class="text-muted">${createdAt}</small>
           </div>
         </div>
-      </div>
-      <div class="col">
-        <div class="card h-100">
-          <img src="..." class="card-img-top" alt="..." />
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">
-              This card has supporting text below as a natural lead-in to
-              additional content.
-            </p>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">Last updated 3 mins ago</small>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-100">
-          <img src="..." class="card-img-top" alt="..." />
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">
-              This is a wider card with supporting text below as a natural
-              lead-in to additional content. This card has even longer content
-              than the first to show that equal height action.
-            </p>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">Last updated 3 mins ago</small>
-          </div>
-        </div>
-      </div>
+      </div> -->
     </div>
   </body>
+  <script>
+    $(document).ready(function () {
+      $.ajax({
+        type: 'GET',
+        url: '/api/orders',
+        data: {},
+        success: function (response) {
+          let rows = response['order_list'];
+          for (let i = 0; i < rows.length; i++) {
+            let nickname = rows[i].nickname;
+            let comment = rows[i].comment;
+            let createdAt = rows[i].createdAt;
+            let order_id = rows[i].order_id;
+
+            let temp_html = `<div class="col">
+                              <div class="card h-100">
+                                <div class="order-img">
+                                  <img src="https://image.onstove.com/850x0/d3kxs6kpbh59hp.cloudfront.net/community/COMMUNITY/8eb7a6a8e9124b8d9915907a2585b98f/3b6b80769f8743b9ac853e428634f00c_1558658665.jpg" class="card-img-top" alt="..." />
+                                </div>
+                                  <div class="card-body">
+                                <h5 class="card-title">${nickname}</h5>
+                                <p class="card-text">${comment}</p>
+                                <a class="btn btn-primary" onclick="order_accept(${order_id})">수락하기</a>
+                              </div>
+                              <div class="card-footer">
+                                <small class="text-muted">${createdAt}</small>
+                              </div>
+                            </div>
+                          </div>`;
+            $('#order-list').append(temp_html);
+          }
+        },
+      });
+    });
+
+    const order_accept = function (order_id) {
+      $.ajax({
+        type: 'PUT',
+        url: `/api/orders/${order_id}`,
+        data: {},
+        success: function (response) {
+          alert('수락 완료');
+          location.reload();
+        },
+      });
+    };
+  </script>
 </html>
