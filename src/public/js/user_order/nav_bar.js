@@ -30,7 +30,10 @@ function test() {
   }
   // nav_bar 수정
   $(document).ready(function () {
-    const pageName = document.querySelector("#page-name").innerText;
+    let pageName = document.querySelector("#page-name").innerText;
+    if (pageName === "user_order_detail") {
+      pageName = "user_orders_list"
+    }
 
     if (pageName === "user_order" || pageName === "user_orders_list") {
         const targetLi = document.querySelector(`.${pageName}`);

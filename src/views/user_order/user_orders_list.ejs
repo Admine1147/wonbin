@@ -1,208 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-      crossorigin="anonymous"
-    ></script>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/user_order/user_orders_list.css">
+    <script src="/js/user_order/user_orders_list.js" defer></script>
     <title>Document</title>
     <style>
-      .wrap-order-list {
-        width: 800px;
-        margin: auto;
-        margin-top: 50px;
-      }
-      #list-title {
-        font-size: 30px;
-        font-weight: bold;
-        margin-bottom: 30px;
-      }
-      .btn-size {
-        width: 100px;
-        border-radius: 0px;
-      }
-      .interval-between-bnt {
-        width: 20px;
-      }
-      #card-wrap {
-        width: 800px;
-        margin-top: 50px;
-      }
-      .card-list {
-        width: 770px;
-        margin: auto;
-        margin-bottom: 25px;
-        padding: 20px;
-        border: 1px solid gainsboro;
-        border-radius: 15px;
-        box-shadow: 5px 5px 5px grey;
-      }
-      .card-top {
-        width: 100%;
-        margin-bottom: 15px;
-        display: flex;
-        justify-content: space-between;
-      }
-      .card-top-left {
-        font-size: 20px;
-        font-weight: bold;
-      }
-      .card-top-right {
-        color: dodgerblue;
-        font-size: 17px;
-        cursor: pointer;
-      }
-      .card-detail {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border: 1px solid gainsboro;
-        border-radius: 8px;
-        overflow: hidden;
-        padding-top: 10px;
-        padding-bottom: 10px;
-      }
-      .left-side {
-        width: 80%;
-        height: 150px;
-      }
-      .right-side {
-        width: 20%;
-        height: 150px;
-        border-left: 1px solid gainsboro;
-      }
-      .status {
-        height: 40px;
-        font-size: 20px;
-        display: flex;
-      }
-      .master-store {
-        color: green;
-      }
-      .last-update {
-        font-size: 15px;
-        margin-top: 5px;
-        margin-left: 50px;
-        color: gray;
-      }
-      .status-num {
-        width: 120px;
-        text-align: center;
-        font-weight: 500;
-      }
-      .card-order-detail {
-        width: 100%;
-        height: 110px;
-        display: flex;
-      }
-      .order-img {
-        overflow: hidden;
-      }
-      .order-img img {
-        width: 110px;
-        max-height: 110px;
-      }
-      .order-request {
-        width: 450px;
-        margin-left: 10px;
-        margin-top: 10px;
-      }
-      .type {
-        display: flex;
-      }
-      .type-detail {
-        border: 1px solid dodgerblue;
-        color: dodgerblue;
-        margin: 0 5px;
-        border-radius: 5px;
-        padding: 0 5px;
-      }
-      .request-detail {
-        margin-top: 10px;
-      }
-      .right-side {
-        font-size: 18px;
-        color: gray;
-        padding-top: 40px;
-      }
-      .right-side-btn-div {
-        width: 100px;
-        text-align: center;
-        margin: auto;
-        border: 1px solid gainsboro;
-        border-radius: 8px;
-        margin-bottom: 10px;
-      }
+        
     </style>
-  </head>
-  <body>
+</head>
+<body>
+
     <div class="wrap-order-list">
-      <div class="center-list">
-        <div id="list-title">주문 목록</div>
+        <div class="center-list">
+            <div id="list-title">주문 목록</div>
 
-        <div class="btn-group">
-          <button type="button" class="btn btn-size btn-primary">전체</button>
-          <div class="interval-between-bnt"></div>
-          <button type="button" class="btn btn-size btn-outline-secondary">
-            진행 중
-          </button>
-          <div class="interval-between-bnt"></div>
-          <button type="button" class="btn btn-size btn-outline-secondary">
-            완료
-          </button>
+            <div class="btn-group">
+                <button type="button" name="all" class="btn btn-size btn-outline-secondary" onclick="location.href='/users/orders?type=all'">전체</button>
+                <div class="interval-between-bnt"></div>
+                <button type="button" name="doing" class="btn btn-size btn-outline-secondary" onclick="location.href='/users/orders?type=doing'">진행 중</button>
+                <div class="interval-between-bnt"></div>
+                <button type="button" name="done" class="btn btn-size btn-outline-secondary" onclick="location.href='/users/orders?type=done'">완료</button>
+            </div>
+            
+            <div id="card-wrap">
+                <% for (let i = 0; i < orderList.length; i++) { %>
+                    <% const createdTime = new Date(orderList[i].createdAt)%>
+                    <% const year = createdTime.getFullYear(); %>
+                    <% const month = createdTime.getMonth() + 1;%>
+                    <% const day = createdTime.getDate(); %>
+                    <% let hour = createdTime.getHours(); %>
+                    <% let minute = createdTime.getMinutes(); %>
+                    <% const updatedTime = new Date(orderList[i].updatedAt)%>
+                    <% const up_year = updatedTime.getFullYear(); %>
+                    <% const up_month = updatedTime.getMonth() + 1;%>
+                    <% const up_day = updatedTime.getDate(); %>
+                    <% let up_hour = updatedTime.getHours(); %>
+                    <% let up_minute = updatedTime.getMinutes(); %>
+
+                    <% if (hour.toString().length === 1) {%>
+                        <% hour = '0' + hour.toString() %>
+                    <% } %>
+                    <% if (minute.toString().length === 1) {%>
+                        <% minute = '0' + minute.toString() %>
+                    <% } %>
+                    <% if (up_hour.toString().length === 1) {%>
+                        <% up_hour = '0' + up_hour.toString() %>
+                    <% } %>
+                    <% if (up_minute.toString().length === 1) {%>
+                        <% up_minute = '0' + up_minute.toString() %>
+                    <% } %>
+                    
+                <div class="card-list" id="<%= orderList[i].order_id %>">
+                    <div class="card-top">
+                        <div class="card-top-left"><%= year %>. <%= month%>. <%= day%>. <%=hour%>:<%=minute%> 요청</div>
+                        <div class="card-top-right" onclick="location.href=`/users/order/<%= orderList[i].order_id %>`">요청 상세보기 >></div>
+                    </div>
+                    <div class="card-detail">
+                        <div class="left-side">
+                            <div class="status">
+                                <div class="status-num">
+                                    <% if (orderList[i].status === 1) { %>
+                                        대기 중...
+                                    <% } %>
+                                    <% if (orderList[i].status === 2) { %>
+                                        수거 중...
+                                    <% } %>
+                                    <% if (orderList[i].status === 3) { %>
+                                        수거 완료
+                                    <% } %>
+                                    <% if (orderList[i].status === 4) { %>
+                                        배송 중...
+                                    <% } %>
+                                    <% if (orderList[i].status === 5) { %>
+                                        배송 완료
+                                    <% } %>
+                                </div>
+                                <div class="master-store">
+                                    <% if (orderList[i].status === 1) { %>
+                                        • 수락을 대기 중... 
+                                    <% } %>
+
+                                    <% if (orderList[i].status === 2 || orderList[i].status === 3 || orderList[i].status === 4) { %>
+                                        • <spna id="store-name"><%= orderList[i].storename %></spna> 에서 처리 중...
+                                    <% } %>
+                                    
+                                    <% if (orderList[i].status === 5) { %>
+                                        • <span id="store-name"><%= orderList[i].storename %></span> 가 완료
+                                    <% } %>
+                                </div>
+                                <div class="last-update">갱신일 : <span><%= up_year%>. <%= up_month%>. <%= up_day%>. <%= up_hour%>:<%= up_minute%></span></div>
+                            </div>
+                            <div class="card-order-detail">
+                                <div class="order-img">
+                                    <% if (orderListThum[orderList[i].order_id]) {%>
+                                    <img src="/image/userRequest/user_<%=orderList[i].user_id%>/order_<%=orderList[i].order_id%>/<%=orderListThum[orderList[i].order_id]%>">
+                                    <% } else { %>
+                                        <img src="/image/publicImg.jpg">
+                                    <% } %>
+                                </div>
+                                <div class="order-request">
+                                    <div class="type">
+                                        <% if (orderList[i].life_laundry === 1) { %>
+                                            <div class="type-detail">생활 빨래</div>
+                                        <% } %>
+                                        <% if (orderList[i].individual_laundry === 1) { %>
+                                            <div class="type-detail">개별 클리닝</div>
+                                        <% } %>
+                                    </div>
+                                    <div class="request-detail">
+                                        <%= orderList[i].comment %>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="right-side">
+                            <% if (orderList[i].isReview > 0) { %>
+                                <% const putParams = JSON.stringify({order_id: orderList[i].order_id, review_id: orderList[i].isReview}); %>
+                                <div class="order-ctrl-btn right-side-btn-div-reviewed" onclick=<%= `openMyReview(${putParams})` %>>리뷰 남김</div>
+                            <% } %>
+                            <% if (orderList[i].status === 5 && orderList[i].isReview === 0) { %>
+                                <div class="order-ctrl-btn right-side-btn-div-active review-active" onclick=<%= `openReview(${orderList[i].order_id})` %>>리뷰 작성</div>
+                            <% } %>
+                            <% if (orderList[i].status <= 4) { %>
+                                <div class="order-ctrl-btn right-side-btn-div">리뷰 작성</div>
+                            <% } %>
+                            <% if (orderList[i].status === 1) { %>
+                                <div class="right-side-btn-div-active" onclick="cancelOrder(this)">요청 취소</div>
+                            <% } else { %>
+                                <div class="right-side-btn-div">요청 취소</div>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+                <% } %>
+
+            </div>
+
         </div>
 
-        <div id="card-wrap">
-          <div class="card-list">
-            <div class="card-top">
-              <div class="card-top-left">2022. 12. 30 요청</div>
-              <div class="card-top-right">요청 상세보기 >></div>
-            </div>
-            <div class="card-detail">
-              <div class="left-side">
-                <div class="status">
-                  <div class="status-num">대기 중</div>
-                  <div class="master-store">• lololo 에서 처리 중...</div>
-                  <div class="last-update">
-                    갱신일 : <span>2022. 12. 30</span>
-                  </div>
+        <!-- 리뷰 작성 버튼 클릭 시 리뷰 작성용 모달창 등장. -->
+        <div id="openPopup">
+            <div class="wrap-write-review">
+                <div class="review-head">리뷰 쓰기</div>
+                <div class="review-storename"></div>
+                <div id="order-id-div"></div>
+
+                <div class="star-rating space-x-4 mx-auto select-star-margin">
+                    <input type="radio" id="5-stars" name="rating" value="5" onclick="checkStar(this)"/>
+                    <label for="5-stars" class="star pr-4">★</label>
+                    <input type="radio" id="4-stars" name="rating" value="4" onclick="checkStar(this)"/>
+                    <label for="4-stars" class="star">★</label>
+                    <input type="radio" id="3-stars" name="rating" value="3" onclick="checkStar(this)"/>
+                    <label for="3-stars" class="star">★</label>
+                    <input type="radio" id="2-stars" name="rating" value="2" onclick="checkStar(this)"/>
+                    <label for="2-stars" class="star">★</label>
+                    <input type="radio" id="1-star" name="rating" value="1" onclick="checkStar(this)"/>
+                    <label for="1-star" class="star">★</label>
                 </div>
-                <div class="card-order-detail">
-                  <div class="order-img">
-                    <img src="/image/publicImg.jpg" />
-                  </div>
-                  <div class="order-request">
-                    <div class="type">
-                      <div class="type-detail">생활 빨래</div>
-                      <div class="type-detail">개별 클리닝</div>
-                    </div>
-                    <div class="request-detail">
-                      생활 빨래로는 속옷과 양말, 개별 클리닝은 침구류 입니다.
-                    </div>
-                  </div>
+                <div id="saveStarValue">0</div>
+
+                <textarea id="commentArea" placeholder="세탁 결과물에 대한 솔직한 리뷰를 남겨주세요."></textarea>
+                <div class="comment-writer-div"><span class="comment-writer-div-span">작성자 : </span> <span class="comment-writter"></span></div>
+                <div class="button-wrap-div">
+                    <button type="button" class="btn btn-secondary" onclick="cancelReviewWindow()">나가기</button>
+                    <button type="button" class="btn btn-primary" onclick="postReview()">작성하기</button>
                 </div>
-              </div>
-              <div class="right-side">
-                <div class="right-side-btn-div">리뷰 작성</div>
-                <div class="right-side-btn-div">요청 취소</div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
+
+        <!-- 이미 내가 작성했던 리뷰 열람하기 -->
+        <div id="open-myReview-popup">
+            <div class="wrap-write-review">
+                <div class="review-head">내가 남긴 리뷰</div>
+                <div class="my-review-storename"></div>
+                <div class="star-mark"></div>
+                <textarea id="my-review-comment-area" readonly></textarea>
+                <div class="comment-reviewer-div"><span class="comment-reviewer-div-span">리뷰어 : </span> <span class="writeed-by-who"></span></div>
+                <div class="comment-reviewer-div"><span class="comment-reviewer-div-span">작성일 : </span> <span class="writeed-by-time"></span></div>
+                <div class="reviewed-button-wrap-div">
+                    <button type="button" class="btn btn-secondary" onclick="cancelMyReviewWindow()">나가기</button>
+                </div>
+            </div>
+        </div>
+
+
     </div>
 
-    <script></script>
-  </body>
+    <script>
+        let type = '<%= type %>';
+    </script>
+
+</body>
 </html>

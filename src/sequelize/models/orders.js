@@ -32,9 +32,12 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       defaultValue: 0
     },
+    storename: {
+      type: DataTypes.STRING
+    },
     status: {
       type: DataTypes.INTEGER,
-      defaultValue: 0
+      defaultValue: 1
     },
     life_laundry: {
       type: DataTypes.INTEGER,
@@ -62,6 +65,10 @@ module.exports = (sequelize, DataTypes) => {
     },
     comment: {
       type: DataTypes.STRING
+    },
+    isReview: {
+      type: DataTypes.INTEGER ,
+      defaultValue: 0
     }
   }, {
     sequelize,

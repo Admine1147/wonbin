@@ -17,9 +17,12 @@ module.exports = {
         type: Sequelize.INTEGER,
         defaultValue: 0
       },
+      storename: {
+        type: Sequelize.STRING
+      },
       status: {
         type: Sequelize.INTEGER,
-        defaultValue: 0
+        defaultValue: 1
       },
       life_laundry: {
         type: Sequelize.INTEGER,
@@ -48,6 +51,10 @@ module.exports = {
       comment: {
         type: Sequelize.STRING
       },
+      isReview: {
+        type: Sequelize.INTEGER ,
+        defaultValue: 0
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
@@ -56,7 +63,7 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
-        defaultValue: Sequelize.fn('now')
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP')
       }
     });
   },

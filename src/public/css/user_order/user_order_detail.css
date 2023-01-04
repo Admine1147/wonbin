@@ -1,0 +1,80 @@
+.wrap-form {
+    width: 700px;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 400px;
+}
+.intro-label {
+    font-size: 20px;
+    margin-top:40px;
+}
+.form-write {
+    margin-top: 0px;
+    margin-left: 20px;
+}
+.sub-script {
+    margin-left: 20px;
+    margin-top: 5px;
+    font-size: 13px;
+    color: gray;
+}
+.small-top-margin {
+    margin-top:15px;
+}
+.middle-top-margin {
+    margin-top:70px;
+}
+.img-type-margin {
+    margin-bottom:10px;
+}
+.types {
+    display: flex;
+    margin-left: 20px;
+}
+.one-type {
+    border: 1px solid dodgerblue;
+    color: dodgerblue;
+    margin: 0 5px;
+    border-radius: 5px;
+    padding: 0 5px;
+    margin-right: 20px;
+}
+.detail-request {
+    width: 600px;
+}
+.img-box {
+    max-width: 700px;
+}
+.img-box img {
+    max-width: 700px;
+}
+.createdDate {
+    width: 500px;
+    font-weight: bold;
+    font-size: 30px;
+}
+.updatedDate {
+    width: 500px;
+    margin-top: 15px;
+    margin-left: 10px;
+    font-size: 20px;
+    color: green;
+}
+.order-status {
+    font-size: 50px;
+    font-weight: bold;
+}
+.more-margin-bottom {
+    margin-bottom: 20px;
+}
+.top-label {
+    text-align: center;
+}
+.align-center-top {
+    text-align: center;
+    margin: auto;
+    margin-bottom: 30px;
+}
+.status-green {
+    color:cadetblue;
+}

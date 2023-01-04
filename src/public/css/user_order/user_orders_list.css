@@ -1,0 +1,375 @@
+.wrap-order-list {
+    width: 800px;
+    margin: auto;
+    margin-top: 50px;
+}
+.center-list {
+    margin-bottom: 300px;
+}
+#list-title {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+.btn-size {
+    width: 100px;
+    border-radius: 0px;
+}
+.interval-between-bnt {
+    width: 20px;
+}
+#card-wrap {
+    width: 800px;
+    margin-top:50px;
+}
+.card-list {
+    width: 780px;
+    margin: auto;
+    margin-bottom: 25px;
+    padding: 20px;
+    border: 1px solid gainsboro;
+    border-radius: 15px;
+    box-shadow: 5px 5px 5px grey;
+}
+.card-top {
+    width: 100%;
+    margin-bottom:15px;
+    display: flex;
+    justify-content: space-between;
+}
+.card-top-left {
+    font-size: 20px;
+    font-weight: bold;
+}
+.card-top-right {
+    color:dodgerblue;
+    font-size: 17px;
+    cursor: pointer;
+}
+.card-detail {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid gainsboro;
+    border-radius: 8px;
+    overflow: hidden;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.left-side {
+    width: 80%;
+    height: 150px;
+    padding-left: 7px;
+}
+.right-side {
+    width: 20%;
+    height: 150px;
+    border-left: 1px solid gainsboro;
+}
+.status {
+    height: 40px;
+    font-size: 20px;
+    display: flex;
+}
+.master-store {
+    width: 275px;
+    font-size: 16px;
+    color: green;
+    margin-top: 3px;
+    padding-left: 14px;
+    overflow: hidden;
+}
+.last-update {
+    font-size: 15px;
+    margin-top: 3px;
+    color: gray;
+}
+.status-num {
+    width: 120px;
+    text-align: center;
+    font-weight: 500;
+}
+.card-order-detail {
+    width: 100%;
+    height: 110px;
+    display: flex;
+}
+.order-img {
+    width: 110px;
+    height: 110px;
+    overflow: hidden;
+}
+.order-img img {
+    width: 110px;
+    max-height: 110px;
+}
+.order-request {
+    width: 450px;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+.type {
+    display: flex;
+}
+.type-detail {
+    border: 1px solid dodgerblue;
+    color: dodgerblue;
+    margin: 0 5px;
+    border-radius: 5px;
+    padding: 0 5px;
+}
+.request-detail {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.right-side {
+    font-size: 18px;
+    color: gray;
+    padding-top: 40px;
+}
+.right-side-btn-div {
+    width: 100px;
+    text-align: center;
+    margin: auto;
+    border: 1px solid gainsboro;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+.right-side-btn-div-active {
+    width: 100px;
+    color: dodgerblue;
+    text-align: center;
+    margin: auto;
+    border: 1px solid dodgerblue;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+.right-side-btn-div-active:hover {
+    background-color: dodgerblue;
+    color: white;
+}
+.right-side-btn-div-reviewed {
+    width: 100px;
+    color: rgb(21, 169, 58);
+    text-align: center;
+    margin: auto;
+    border: 1px solid rgb(21, 169, 58);
+    border-radius: 8px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+#order-id-div {
+    display: none;
+}
+
+
+/* 모달창 */
+
+#openPopup {
+    display: none;
+}
+
+#openPopup {
+    width: 650px;
+    height: 740px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -400px;
+    margin-left: -325px;
+    background-color: white;
+    z-index: 2;
+    border: 3px solid dodgerblue;
+    padding-top: 40px;
+}
+
+#backon {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.wrap-write-review {
+    width: 600px;
+    margin: auto;
+}
+
+.review-head {
+    text-align: center;
+    font-size: 17px;
+    margin-bottom: 30px;
+    color: rgba(93, 93, 93, 0.5);
+}
+
+.review-storename {
+    font-size: 30px;
+    text-align: center;
+    font-weight: bold;
+    color: dodgerblue;
+}
+
+#saveStarValue {
+    display: none;
+}
+
+.select-star-margin {
+    margin-top: 20px;
+}
+
+#commentArea {
+    display: block;
+    width: 500px;
+    height: 300px;
+    margin: auto;
+    margin-top: 50px;
+    resize: none;
+    border: 1px solid rgb(202, 202, 202);
+}
+
+.comment-writer-div {
+    width: 500px;
+    margin: auto;
+    margin-top : 20px;
+}
+
+.comment-writer-div-span {
+    color:rgba(120, 120, 120, 0.7);
+    font-size: 15px;
+}
+
+.comment-writter {
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.button-wrap-div {
+    width: 500px;
+    margin: auto;
+    margin-top: 30px;
+}
+
+.button-wrap-div button {
+    float: right;
+    margin-left: 15px;
+}
+
+.review-active {
+    display: block;
+}
+
+
+/* 별점 */
+.star-rating {
+    display: flex;
+    flex-direction: row-reverse;
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+    justify-content: space-around;
+    padding: 0 0.2em;
+    text-align: center;
+    width: 5em;
+  }
+   
+  .star-rating input {
+    display: none;
+  }
+   
+  .star-rating label {
+    -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+    -webkit-text-stroke-width: 2.3px;
+    -webkit-text-stroke-color: #2b2a29;
+    cursor: pointer;
+  }
+   
+  .star-rating :checked ~ label {
+    -webkit-text-fill-color: gold;
+  }
+   
+  .star-rating label:hover,
+  .star-rating label:hover ~ label {
+    -webkit-text-fill-color: #fff58c;
+  }
+  
+  .saveStarValue {
+    display: none;
+  }
+
+
+  /* 내가 썻던 리뷰 다시 보기 */
+#open-myReview-popup {
+    display: none;
+}
+
+#open-myReview-popup {
+    width: 650px;
+    min-height: 300px;
+    max-height: 740px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -400px;
+    margin-left: -325px;
+    background-color: white;
+    z-index: 2;
+    border: 3px solid dodgerblue;
+    padding-top: 40px;
+    padding-bottom: 35px;
+}
+
+.star-mark {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 25px;
+}
+
+.my-review-storename {
+    font-size: 30px;
+    text-align: center;
+    font-weight: bold;
+    color: dodgerblue;
+}
+
+#my-review-comment-area {
+    display: block;
+    width: 550px;
+    min-height: 100px;
+    max-height: 300px;
+    margin: auto;
+    margin-top: 70px;
+    margin-bottom: 30px;
+    resize: none;
+    border: 1px solid rgb(202, 202, 202, 0);
+    overflow: hidden;
+}
+
+#my-review-comment-area:focus {
+    outline: none;
+}
+
+.comment-reviewer-div {
+    width: 550px;
+    margin: auto;
+}
+
+.comment-reviewer-div-span {
+    color:rgba(120, 120, 120, 0.7);
+    font-size: 15px;
+}
+
+.reviewed-button-wrap-div {
+    width: 500px;
+    margin: auto;
+    margin-top: 30px;
+}
+
+.reviewed-button-wrap-div button {
+    float: right;
+    margin-left: 15px;
+}
