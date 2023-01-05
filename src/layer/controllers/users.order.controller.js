@@ -23,25 +23,30 @@ class UserOrderController {
         const page = 1; 
 
         const result = await this.userOrderService.getUserOrdersList(type, user_id, page);
+        const userInfo = await this.userOrderService.getUserInfo(user_id);
 
         res.render('user_order/index', {
             ejsName: "user_orders_list", 
             orderList: result.getUserOrderList, 
             orderListThum: result.getUserOrderListthumImgName, 
-            type: type
+            type: type,
+            userInfo: userInfo
         });
     }
 
     // 요청 사항 디테일 보여주기
     getPage_userOrderDetail = async (req, res) => {
         const order_id = Number(req.params.orderId);
+        const user_id = res.locals.user_id;
 
         const getOrderDetail = await this.userOrderService.getOrderDetail(order_id);
+        const userInfo = await this.userOrderService.getUserInfo(user_id);
 
         res.render('user_order/index', {
             ejsName: "user_order_detail", 
             orderDetail: getOrderDetail.order, 
-            orderDetailImgs: getOrderDetail.orderImgs
+            orderDetailImgs: getOrderDetail.orderImgs,
+            userInfo: userInfo
         });
     }
 

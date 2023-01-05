@@ -21,8 +21,11 @@
     <title>main</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-custom navbar-mainbg">
+    <nav class="navbar navbar-expand-custom navbar-mainbg" id="parent-nav">
       <a class="navbar-brand navbar-logo" href="/">10-10-gaza</a>
+      <% const point = Number(userInfo.point); %>
+			<% const pointResult = point.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') %>
+      <div id="user-point">나의 포인트 : <%= pointResult %></div>
       <button
         class="navbar-toggler"
         type="button"

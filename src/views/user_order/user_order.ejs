@@ -19,10 +19,8 @@
     <div class="wrap-form">
         <form class="row g-3">
 			<div class="intro-label point-label">
-				<label for="form-check-input" class="form-label">- 현재 남은 포인트 -</label>
-				<% const point = Number(userInfo.point); %>
-				<% const pointResult = point.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') %>
-				<div class="user-point"><%= pointResult %></div>
+				<label for="form-check-input" class="form-label"><%= userInfo.nickname %></label>
+				<div class="user-point">- 클리닝 요청하기 -</div>
 			</div>
 			<div class="intro-label">
 				<label for="form-check-input" class="form-label">1. 세탁물 종류 선택</label>

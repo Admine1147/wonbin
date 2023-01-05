@@ -170,3 +170,14 @@ i {
 .order-list {
   margin: 100px 200px auto 200px;
 }
+
+#user-point {
+  font-size: 25px;
+  font-weight: bold;
+  position: relative;
+  margin-left: 30px;
+}
+
+#parent-nav {
+  position: relative;
+}
