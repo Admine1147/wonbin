@@ -109,6 +109,9 @@ i {
   bottom: 0;
   left: -25px;
 }
+.linkpoint {
+  cursor: pointer;
+}
 
 @media (min-width: 992px) {
   .navbar-expand-custom {

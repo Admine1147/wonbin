@@ -17,10 +17,12 @@
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="/css/signup/MasterSignUp.css" />
-    <script src="/js/auth/main.js"></script>
+    <script src="/js/auth/master_sign_up.js"></script>
     <title>회원가입 페이지</title>
   </head>
+
   <body>
+
     <nav class="navbar navbar-expand-custom navbar-mainbg">
       <a class="navbar-brand navbar-logo" href="/main">10-10-gaza</a>
       <button
@@ -45,28 +47,28 @@
         </ul>
       </div>
     </nav>
-    <form action="doJoin" method="POST" class="joinForm" onsubmit="DoJoinForm__submit(this); return false;">
+    <form id="form-tag" class="joinForm">
       <h2>사장님 회원가입</h2>
       <div class="textForm">
         <input name="email" type="text" class="email" placeholder="이메일">
         </input>
       </div>
       <div class="textForm">
-        <input name="loginPw" type="password" class="pw" placeholder="비밀번호">
+        <input name="password" type="password" class="pw" placeholder="비밀번호">
       </div>
       <div class="textForm">
-        <input name="loginPwConfirm" type="password" class="pw" placeholder="비밀번호 확인">
+        <input name="confirm-password" type="password" class="confirm-pw" placeholder="비밀번호 확인">
       </div>
       <div class="textForm">
-        <input name="name" type="password" class="name" placeholder="이름">
+        <input name="storename" type="text" class="name" placeholder="가게 이름">
       </div>
       <div class="textForm">
-        <input name="cellphoneNo" type="number" class="cellphoneNo" placeholder="전화번호">
+        <input name="phonenumber" type="number" class="cellphoneNo" placeholder="전화번호">
       </div>
       <div class="textForm">
         <input name="address" type="text" class="nickname" placeholder="주소">
       </div>
-      <input type="submit" class="btn" value="J O I N"/>
+      <input type="button" class="btn" value="J O I N" onclick="submitJoin()"/>
     </form>
   </div>
 

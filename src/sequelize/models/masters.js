@@ -32,6 +32,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
+    salt: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     storename: {
       type: DataTypes.STRING,
       allowNull: false

@@ -17,7 +17,7 @@
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="/css/login/loginMaster.css" />
-    <script src="/js/auth/main.js" defer></script>
+    <script src="/js/auth/master_login.js" defer></script>
     <title>사장님 로그인</title>
   </head>
   <body>
@@ -48,13 +48,13 @@
     </nav>
     <div class="login-wrapper">
       <h2>사장님로그인</h2>
-      <form method="post" action="서버의url" id="login-form">
+      <form id="login-form">
         <input type="text" name="userName" placeholder="Email" />
         <input type="password" name="userPassword" placeholder="Password" />
         <label for="remember-check">
           <input type="checkbox" id="remember-check" />아이디 저장하기
         </label>
-        <input type="submit" value="Login" />
+        <input type="submit" value="Login" onclick="masterLogin()" />
       </form>
     </div>
   </body>

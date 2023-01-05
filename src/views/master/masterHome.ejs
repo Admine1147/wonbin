@@ -59,7 +59,7 @@
             <a class="nav-link" href="/masters/reviews"><i class="far fa-clone"></i>내 세탁소 리뷰보기</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/main"><i class="far fa-clone"></i>로그 아웃</a>
+            <a class="nav-link" href="/logout"><i class="far fa-clone"></i>로그 아웃</a>
           </li>
         </ul>
       </div>
@@ -94,21 +94,35 @@
         url: '/api/orders',
         data: {},
         success: function (response) {
+          console.log('세탁물 요청 목록 연결됨');
           let rows = response['order_list'];
+          let img_rows = response["order_img_list"];
           for (let i = 0; i < rows.length; i++) {
+            let order_id = rows[i].order_id;
             let nickname = rows[i].nickname;
+            let address = rows[i].address;
             let comment = rows[i].comment;
             let createdAt = rows[i].createdAt;
-            let order_id = rows[i].order_id;
+            let user_id = rows[i].user_id;
+            let img_name = img_rows[order_id];
+            let img_src = '';
+
+            if (img_name) {
+              img_src = `/image/userRequest/user_${user_id}/order_${order_id}/${img_name}`
+            } else {
+              img_src = `https://image.onstove.com/850x0/d3kxs6kpbh59hp.cloudfront.net/community/COMMUNITY/8eb7a6a8e9124b8d9915907a2585b98f/3b6b80769f8743b9ac853e428634f00c_1558658665.jpg`
+            } 
+            
 
             let temp_html = `<div class="col">
                               <div class="card h-100">
                                 <div class="order-img">
-                                  <img src="https://image.onstove.com/850x0/d3kxs6kpbh59hp.cloudfront.net/community/COMMUNITY/8eb7a6a8e9124b8d9915907a2585b98f/3b6b80769f8743b9ac853e428634f00c_1558658665.jpg" class="card-img-top" alt="..." />
+                                  <img src=${img_src} class="card-img-top" alt="..." />
                                 </div>
                                   <div class="card-body">
                                 <h5 class="card-title">${nickname}</h5>
                                 <p class="card-text">${comment}</p>
+                                <p class="card-text"> 요청자 주소 : ${address}</p>
                                 <a class="btn btn-primary" onclick="order_accept(${order_id})">수락하기</a>
                               </div>
                               <div class="card-footer">
@@ -128,6 +142,8 @@
         url: `/api/orders/${order_id}`,
         data: {},
         success: function (response) {
+          if (response.success === false) return alert('이미 할 일이 있으니 할 일이나 마저 하십쇼. 인간');
+
           alert('수락 완료');
           location.reload();
         },

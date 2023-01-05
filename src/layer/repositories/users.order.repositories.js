@@ -73,18 +73,30 @@ class UserOrderRepository {
         return true;   
     }
 
-    getUserOrderListAll = async (user_id) => {
-        const userOrderListAll = await this.ordersModel.findAll({where: {user_id}, order: [['order_id', 'DESC']] });
+    getUserOrderListAll = async (user_id, pageCount) => {
+        const userOrderListAll = await this.ordersModel.findAll({
+            where: {user_id}, order: [['order_id', 'DESC']],
+            offset: pageCount,
+            limit: 5
+        });
         return userOrderListAll;
     }
 
-    getUserOrderListDoing = async (user_id) => {
-        const userOrderListDoing = await this.ordersModel.findAll({where: { [Op.and]: [{ user_id }], [Op.not]: [{ status: 5 }] }, order: [['order_id', 'DESC']]})
+    getUserOrderListDoing = async (user_id, pageCount) => {
+        const userOrderListDoing = await this.ordersModel.findAll({
+            where: { [Op.and]: [{ user_id }], [Op.not]: [{ status: 5 }] }, order: [['order_id', 'DESC']],
+            offset: pageCount,
+            limit: 5
+        })
         return userOrderListDoing;
     }
 
-    getUserOrderListDone = async (user_id) => {
-        const userOrderListDone = await this.ordersModel.findAll({where: { [Op.and]: [{ user_id }, { status: 5 }] }, order: [['order_id', 'DESC']]});
+    getUserOrderListDone = async (user_id, pageCount) => {
+        const userOrderListDone = await this.ordersModel.findAll({
+            where: { [Op.and]: [{ user_id }, { status: 5 }] }, order: [['order_id', 'DESC']],
+            offset: pageCount,
+            limit: 5
+        });
         return userOrderListDone;
     }
 

@@ -17,6 +17,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
+      salt: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
       nickname: {
         type: Sequelize.STRING,
         allowNull: false

@@ -77,18 +77,23 @@ class UserOrderService {
         return insertOrderImgNameData;
     }   
 
-    getUserOrdersList = async (listType, user_id) => {
+    getUserOrdersList = async (listType, user_id, page) => {
         let getUserOrderList = [];
         let getUserOrderListthumImgName = [];
+        let pageCount = 0;  // 페이지에 따라서, pageCount번째 레코드 부터 시작해서 5개를 뽑아와라.
+
+        if (page > 1) {
+            pageCount = 5 * (page - 1);
+        }
 
         if (!listType || listType === "all") {
-            getUserOrderList = await this.userOrderModel.getUserOrderListAll(user_id);
+            getUserOrderList = await this.userOrderModel.getUserOrderListAll(user_id, pageCount);
         }
         if (listType === "doing") {
-            getUserOrderList = await this.userOrderModel.getUserOrderListDoing(user_id);
+            getUserOrderList = await this.userOrderModel.getUserOrderListDoing(user_id, pageCount);
         }
         if (listType === "done") {
-            getUserOrderList = await this.userOrderModel.getUserOrderListDone(user_id);
+            getUserOrderList = await this.userOrderModel.getUserOrderListDone(user_id, pageCount);
         }
 
         const arrayOrderId = getUserOrderList.map((order) => {
@@ -103,6 +108,45 @@ class UserOrderService {
         }
 
         return result;
+    }
+
+    getUserOrdersList_page = async (listType, user_id, page) => {
+        try {
+            let getUserOrderList = [];
+            let getUserOrderListthumImgName = [];
+            let pageCount = 0;  // 페이지에 따라서, pageCount번째 레코드 부터 시작해서 5개를 뽑아와라.
+
+            if (page > 1) {
+                pageCount = 5 * (page - 1);
+            }
+
+            if (!listType || listType === "all") {
+                getUserOrderList = await this.userOrderModel.getUserOrderListAll(user_id, pageCount);
+            }
+            if (listType === "doing") {
+                getUserOrderList = await this.userOrderModel.getUserOrderListDoing(user_id, pageCount);
+            }
+            if (listType === "done") {
+                getUserOrderList = await this.userOrderModel.getUserOrderListDone(user_id, pageCount);
+            }
+
+            if (!getUserOrderList.length) {
+                return {success: false, type:"none", message: "더 이상의 목록이 존재하지 않습니다."};
+            }
+
+            const arrayOrderId = getUserOrderList.map((order) => {
+                return order.order_id;
+            })
+       
+            getUserOrderListthumImgName = await this.userOrderImgsModel.getuserOrderListThumImgName(arrayOrderId);
+            
+            return {success: true, orderList: getUserOrderList, orderListThum: getUserOrderListthumImgName, message:"세탁 요청 목록 더 가져오기 성공"};
+
+        } catch (err) {
+            console.log(err);
+            return {success: false, type:"err", message:"목록을 가져오는 도중 오류가 발생하였습니다."}
+        }
+        
     }
 
     deleteUserOrder = async (order_id) => {
