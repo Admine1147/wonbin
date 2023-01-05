@@ -10,6 +10,9 @@ const multer = require('multer');
 const uuid = require('uuid4');
 const UserOrderController = require('../../layer/controllers/users.order.controller.js');
 
+// 검증 미들웨어
+const userMiddleware = require("../../middleware/user_middleware.js");
+
 const storageImg = multer.diskStorage({
     destination: (req, file, cb) => {
         
@@ -46,9 +49,9 @@ const fields = [
 ]
 
 
-router.post('/', usersOrderController.insertUserOrder)
-router.post('/img', imgUpload.fields(fields), usersOrderController.insertUserOrderImgUpload);
-router.get('/:order_id/review/:review_id', usersOrderController.getOrderReview);
+router.post('/', userMiddleware, usersOrderController.insertUserOrder)
+router.post('/img', userMiddleware, imgUpload.fields(fields), usersOrderController.insertUserOrderImgUpload);
+router.get('/:order_id/review/:review_id', userMiddleware, usersOrderController.getOrderReview);
 
 
 module.exports = router;

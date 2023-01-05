@@ -78,9 +78,12 @@
         width: 100%;
         height: auto;
       }
+      .btn {
+        height: 50px;
+      }
     </style>
   </head>
-  <body>
+  <body id="order-manage">
     <nav class="navbar navbar-expand-custom navbar-mainbg">
       <a class="navbar-brand navbar-logo" href="/masters">10-10-gaza</a>
       <button
@@ -99,81 +102,138 @@
             <div class="right"></div>
           </div>
           <li class="nav-item">
-            <a class="nav-link" href="/masters"
-              ><i class="far fa-address-book"></i>요청 목록</a
-            >
+            <a class="nav-link" href="/masters"><i class="far fa-address-book"></i>요청 목록</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="/masters/laundryCare"
-              ><i class="fas fa-tachometer-alt"></i>내 세탁물 관리</a
-            >
+            <a class="nav-link" href="/masters/laundryCare"><i class="fas fa-tachometer-alt"></i>내 세탁물 관리</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/masters/reviews"
-              ><i class="far fa-clone"></i>내 세탁소 리뷰보기</a
-            >
+            <a class="nav-link" href="/masters/reviews"><i class="far fa-clone"></i>내 세탁소 리뷰보기</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/main"
-              ><i class="far fa-clone"></i>로그 아웃</a
-            >
+            <a class="nav-link" href="/logout"><i class="far fa-clone"></i>로그 아웃</a>
           </li>
         </ul>
       </div>
     </nav>
-    <table
-      class="tg"
-      style="margin-left: auto; margin-right: auto; margin-top: 200px"
-    >
-      <colgroup>
-        <col style="width: 80px" />
-        <col style="width: 80px" />
-        <col style="width: 80px" />
-        <col style="width: 67px" />
-      </colgroup>
-      <thead>
-        <tr>
-          <th class="tg-c3ow" colspan="4">세탁 받은 목록</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="tg-c3ow">닉네임</td>
-          <td class="tg-c3ow" colspan="3">닉네임</td>
-        </tr>
-        <tr>
-          <td class="tg-c3ow">전화번호</td>
-          <td class="tg-c3ow" colspan="3">전화번호</td>
-        </tr>
-        <tr>
-          <td class="tg-c3ow">주소</td>
-          <td class="tg-c3ow" colspan="3">주소</td>
-        </tr>
-        <tr>
-          <td class="tg-9d8n" colspan="4" rowspan="6">
-            <div>
-              <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKt7ZDite8uarH2t_0xmkhpJufXePECdS1Uw&usqp=CAU"
-              />
-            </div>
-          </td>
-        </tr>
-        <tr></tr>
-        <tr></tr>
-        <tr></tr>
-        <tr></tr>
-        <tr></tr>
-        <tr>
-          <td class="tg-c3ow" colspan="4" rowspan="2">요청사항</td>
-        </tr>
-        <tr></tr>
-        <tr>
-          <td class="tg-c3ow">등록완료</td>
-          <td class="tg-c3ow">수거완료</td>
-          <td class="tg-c3ow">배송중</td>
-          <td class="tg-c3ow">배송완료</td>
-        </tr>
-      </tbody>
-    </table>
   </body>
+  <script>
+    $(document).ready(function () {
+      $.ajax({
+        type: 'GET',
+        url: '/api/orders/laundryCare',
+        data: {},
+        success: function (response) {
+          console.log('세탁물 관리 연결 됨');
+          if (response.success === false) {
+            alert(response.message);
+            return;
+          }
+
+          let rows = response['order'];
+          let order_id = rows.order_id;
+          let user_id = rows.user_id;
+          let status = rows.status;
+          let nickname = rows.nickname;
+          let phonenumber = rows.phonenumber;
+          let address = rows.address;
+          let comment = rows.comment;
+          let nowStep = '';
+          let nextStep = '';
+          let img_name = response['img_name'];
+
+          let img_src = '';
+
+          if (img_name) {
+            img_src = `/image/userRequest/user_${user_id}/order_${order_id}/${img_name}`;
+          } else {
+            img_src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKt7ZDite8uarH2t_0xmkhpJufXePECdS1Uw&usqp=CAU"
+          }
+
+          switch (status) {
+            case 2:
+              nowStep = '수거 중';
+              nextStep = '수거 완료';
+              break;
+
+            case 3:
+              nowStep = '수거 완료';
+              nextStep = '배송 중';
+              break;
+
+            case 4:
+              nowStep = '배송 중';
+              nextStep = '배송 완료';
+              break;
+          }
+
+          let temp_html = `<table class="tg" style="margin-left: auto; margin-right: auto; margin-top: 200px; margin-bottom: 200px;">
+                              <colgroup>
+                                <col style="width: 80px" />
+                                <col style="width: 80px" />
+                                <col style="width: 80px" />
+                                <col style="width: 67px" />
+                              </colgroup>
+                              <thead>
+                                <tr>
+                                  <th class="tg-c3ow" colspan="4">세탁 받은 목록</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td class="tg-c3ow">닉네임</td>
+                                  <td class="tg-c3ow" colspan="3">${nickname}</td>
+                                </tr>
+                                <tr>
+                                  <td class="tg-c3ow">폰번호</td>
+                                  <td class="tg-c3ow" colspan="3">${phonenumber}</td>
+                                </tr>
+                                <tr>
+                                  <td class="tg-c3ow">주소</td>
+                                  <td class="tg-c3ow" colspan="3">${address}</td>
+                                </tr>
+                                <tr>
+                                  <td class="tg-9d8n" colspan="4" rowspan="6">
+                                    <div>
+                                      <img
+                                        src="${img_src}"
+                                      />
+                                    </div>
+                                  </td>
+                                </tr>
+                                <tr></tr>
+                                <tr></tr>
+                                <tr></tr>
+                                <tr></tr>
+                                <tr></tr>
+                                <tr>
+                                  <td class="tg-c3ow" colspan="4" rowspan="2">${comment}</td>
+                                </tr>
+                                <tr></tr>
+                                <tr>
+                                  <td class="tg-c3ow" colspan="2" rowspan="1">${nowStep}</td>
+                                  <td class="tg-c3ow" colspan="2" rowspan="1">
+                                    <button class="btn" onclick="nextStep(${order_id})">
+                                      ${nextStep}
+                                    </button></td>
+                                  </tr>
+                                </tbody>
+                              </table>`;
+          $('#order-manage').append(temp_html);
+        },
+      });
+    });
+
+    const nextStep = function (order_id) {
+      $.ajax({
+        type: 'PUT',
+        url: `/api/orders/laundryCare/${order_id}`,
+        data: {},
+        success: function (response) {
+          alert('다음 단계로~');
+          location.reload();
+        },
+      });
+    };
+  </script>
 </html>

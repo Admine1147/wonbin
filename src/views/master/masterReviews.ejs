@@ -99,28 +99,56 @@
             <div class="right"></div>
           </div>
           <li class="nav-item">
-            <a class="nav-link" href="/masters"
-              ><i class="far fa-address-book"></i>요청 목록</a
-            >
+            <a class="nav-link" href="/masters"><i class="far fa-address-book"></i>요청 목록</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/masters/laundryCare"
-              ><i class="fas fa-tachometer-alt"></i>내 세탁물 관리</a
-            >
+            <a class="nav-link" href="/masters/laundryCare"><i class="fas fa-tachometer-alt"></i>내 세탁물 관리</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="/masters/reviews"
-              ><i class="far fa-clone"></i>내 세탁소 리뷰보기</a
-            >
+            <a class="nav-link" href="/masters/reviews"><i class="far fa-clone"></i>내 세탁소 리뷰보기</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/main"
-              ><i class="far fa-clone"></i>로그 아웃</a
-            >
+            <a class="nav-link" href="/logout"><i class="far fa-clone"></i>로그 아웃</a>
           </li>
         </ul>
       </div>
     </nav>
-    <h1>리뷰페이지 만들기</h1>
+    <div class="row row-cols-1 row-cols-md-3 g-4" id="review-list"></div>
   </body>
+  <script>
+    $(document).ready(function () {
+      $.ajax({
+        type: 'GET',
+        url: '/api/orders/reviews',
+        data: {},
+        success: function (response) {
+          console.log('마스터 리뷰 목록 연결됨');
+          let rows = response['review_list'];
+          for (let i = 0; i < rows.length; i++) {
+            let master_id = rows[i].master_id;
+            let nickname = rows[i].nickname;
+            let comment = rows[i].comment;
+            let star = rows[i].star;
+            let createdAt = rows[i].createdAt;
+
+            let temp_html = `<div class="col">
+                              <div class="card h-100">
+                                <div class="order-img">
+                                  <img src="https://image.onstove.com/850x0/d3kxs6kpbh59hp.cloudfront.net/community/COMMUNITY/8eb7a6a8e9124b8d9915907a2585b98f/3b6b80769f8743b9ac853e428634f00c_1558658665.jpg" class="card-img-top" alt="..." />
+                                </div>
+                                  <div class="card-body">
+                                <h5 class="card-title">${nickname}</h5>
+                                <p class="card-text">${comment}</p>
+                              </div>
+                              <div class="card-footer">
+                                <small class="text-muted">${createdAt}</small>
+                              </div>
+                            </div>
+                          </div>`;
+            $('#review-list').append(temp_html);
+          }
+        },
+      });
+    });
+  </script>
 </html>

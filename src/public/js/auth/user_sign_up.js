@@ -1,3 +1,5 @@
+"use strict";
+
 // ---------Responsive-navbar-active-animation-----------
 function test() {
     var tabsNewAnim = $("#navbarSupportedContent");
@@ -28,21 +30,10 @@ function test() {
       });
     });
   }
-  // nav_bar 수정
   $(document).ready(function () {
-    let pageName = document.querySelector("#page-name").innerText;
-    if (pageName === "user_order_detail") {
-      pageName = "user_orders_list"
-    }
-
-    if (pageName === "user_order" || pageName === "user_orders_list") {
-        const targetLi = document.querySelector(`.${pageName}`);
-        targetLi.classList.add("active");
-        
-        setTimeout(function () {
-          test();
-        });
-    }
+    setTimeout(function () {
+      test();
+    });
   });
   $(window).on("resize", function () {
     setTimeout(function () {
@@ -88,3 +79,59 @@ function test() {
   //         }
   //     })
   // });
+
+  const submitJoin = () => {
+    const email = document.getElementsByName("email");
+    const password = document.getElementsByName("password");
+    const confirm_password = document.getElementsByName("confirm-password");
+    const nickname = document.getElementsByName("nickname");
+    const phonenumber = document.getElementsByName("phonenumber");
+    const address = document.getElementsByName("address");
+
+    if (!email[0].value || !email[0].value.includes("@") || !email[0].value.includes(".")) {
+        alert("이메일을 정확히 입력해 주세요");
+        return 
+    }
+    if (password[0].value !== confirm_password[0].value) {
+        alert("패스워드가 일치하지 않습니다.");
+        return;
+    }
+    if (password[0].value.length < 4 ) {
+        alert("비밀번호가 너무 짧습니다.");
+    }
+    if (!nickname[0].value) {
+        alert("가게 이름을 입력해 주세요")
+    }
+    if (!phonenumber[0].value || phonenumber[0].value.length < 11 || phonenumber[0].value.length > 11) {
+        alert("휴대폰 번호를 정확히 입력해 주세요");
+        return;
+    }
+    if (!address[0].value) {
+        alert("주소지를 입력해 주세요");
+        return;
+    }
+
+    const data = {
+        email: email[0].value, 
+        password: password[0].value, 
+        confirm_password: confirm_password[0].value, 
+        nickname: nickname[0].value, 
+        phonenumber: phonenumber[0].value, 
+        address: address[0].value
+    }
+
+    $.ajax({
+        type: "POST",
+        url: '/api/signup/user',
+        data: data,
+        success: function (response) {
+            if (response.success === false) {
+                alert(response.message);
+            }
+            if (response.success === true) {
+                location.href="/users";
+            }
+           
+        }
+    });
+}

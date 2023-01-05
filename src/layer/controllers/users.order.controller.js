@@ -11,7 +11,7 @@ class UserOrderController {
     userOrderService = new UserOrderService();
 
     getPage_userOrder = async (req, res) => {
-        const user_id = 1;  // jwt 미들웨어에서 res.locals.userId 로 가져온다.
+        const user_id = res.locals.user_id;
 
         const userInfo = await this.userOrderService.getUserInfo(user_id);
         res.render('user_order/index', {ejsName: "user_order", userInfo: userInfo});
@@ -19,11 +19,10 @@ class UserOrderController {
 
     getPage_userOrderList = async (req, res) => {
         const type = req.query["type"];
-        const user_id = 1;        // jwt 미들웨어에서 user_id 를 res에 넣어줄거야.
+        const user_id = res.locals.user_id;
+        const page = 1; 
 
-        const result = await this.userOrderService.getUserOrdersList(type, user_id);
-
-        //console.log(result.getUserOrderListthumImgName);
+        const result = await this.userOrderService.getUserOrdersList(type, user_id, page);
 
         res.render('user_order/index', {
             ejsName: "user_orders_list", 
@@ -52,9 +51,9 @@ class UserOrderController {
 
     insertUserOrder = async (req, res) => {
         const orderData = JSON.parse(req.body.result);
-        const user_id = 1;  // 나중에 accessToken 의 payload 에서 값을 가져올 거야.
+        const user_id = res.locals.user_id;
         orderData["user_id"] = user_id;
-
+        
         const createOrderData = await this.userOrderService.createOrder(orderData);
         
         if (createOrderData.success === false) {
@@ -81,7 +80,7 @@ class UserOrderController {
 
     deleteUserOrder = async (req, res) => {
         const order_id = Number(req.params.order_id);
-        const user_id = 1;  // jwt 미들웨워의 payload => res.locals 로 가져온다.
+        const user_id = res.locals.user_id;
         const result = await this.userOrderService.deleteUserOrder(order_id);
         const result2 = await this.userOrderService.deleteuUserOrderImg(order_id, user_id); 
 
@@ -98,7 +97,7 @@ class UserOrderController {
 
     getUserNameAndMasterStorename = async (req, res) => {   // 해당 오더에 등록된 storename과, 유저의 닉네임
         const order_id = req.params.order_id;
-        const user_id = 1;  // jwt 미들웨어에서 가져온다.
+        const user_id = res.locals.user_id;
 
         const user = await this.userOrderService.getUserInfo(user_id);
         const order = await this.userOrderService.getOneOrder(order_id);
@@ -113,7 +112,7 @@ class UserOrderController {
         try {
             const { reviewComment, reviewStar } = req.body;
             const order_id = Number(req.params.order_id);
-            const user_id = 1;  // jwt의 res.locals 에서 가져올 예정.
+            const user_id = res.locals.user_id;
 
             if (reviewComment === '' || Number(reviewStar) === 0) {
                 throw new Error("잘못된 값을 입력 받았습니다.")
@@ -146,7 +145,7 @@ class UserOrderController {
     getOrderReview = async (req, res) => {
         const order_id = Number(req.params.order_id);
         const review_id = Number(req.params.review_id);
-        const user_id = 1;  // jwt
+        const user_id = res.locals.user_id;
      
         if (!order_id || !review_id) {
             return res.status(400).json({success:false, message:"잘못된 타입으로 리뷰를 찾고 있습니다."})
@@ -159,6 +158,34 @@ class UserOrderController {
         }
 
         res.status(200).json(result); 
+    }
+
+    getMorePageOrders = async (req, res) => {
+        const type = req.params.type;
+        const page = Number(req.params.page);
+        const user_id = res.locals.user_id;
+
+        console.log("페이지 잘 넘어오나?")
+        console.log(type, page);
+        
+        if (type !== "all" && type !== "doing" && type !== "done") {
+            return res.status(400).json({success: false, message:"잘못된 타입의 목록입니다."})
+        }
+        if (Number.isNaN(page)) {
+            return res.status(400).json({success: false, message:"잘못된 타입의 페이지 입니다."})
+        }
+ 
+        const result = await this.userOrderService.getUserOrdersList_page(type, user_id, page);
+
+        if (result.success === false) {
+            if (result.type === "none") {
+                return res.status(200).json(result);
+            }
+            return res.status(400).json(result);
+        }
+
+        console.log("쩨에발...");
+        return res.status(200).json(result);
     }
 }
 

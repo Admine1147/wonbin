@@ -1,3 +1,5 @@
+"use strict";
+
 // ---------Responsive-navbar-active-animation-----------
 function test() {
     var tabsNewAnim = $("#navbarSupportedContent");
@@ -28,21 +30,15 @@ function test() {
       });
     });
   }
-  // nav_bar 수정
   $(document).ready(function () {
-    let pageName = document.querySelector("#page-name").innerText;
-    if (pageName === "user_order_detail") {
-      pageName = "user_orders_list"
-    }
+    const targetForm = document.querySelector("#login-form");
+    targetForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+    })
 
-    if (pageName === "user_order" || pageName === "user_orders_list") {
-        const targetLi = document.querySelector(`.${pageName}`);
-        targetLi.classList.add("active");
-        
-        setTimeout(function () {
-          test();
-        });
-    }
+    setTimeout(function () {
+      test();
+    });
   });
   $(window).on("resize", function () {
     setTimeout(function () {
@@ -88,3 +84,31 @@ function test() {
   //         }
   //     })
   // });
+
+
+const masterLogin = () => {
+    const loginTag = document.getElementsByName("userName");
+    const passwordTag = document.getElementsByName("userPassword");
+
+    const email = loginTag[0].value;
+    const password = passwordTag[0].value;
+
+    const data = {
+        email, password
+    }
+
+    $.ajax({
+        type: "POST",
+        url: '/api/auth/master',
+        data: data,
+        success: function (response) {
+            if (response.success === false) {
+                alert(response.message);
+            }
+            if (response.success === true) {
+                location.href="/masters";
+            }
+           
+        }
+    });
+}

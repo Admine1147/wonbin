@@ -1,6 +1,7 @@
 "use strict";
 
 const express = require("express");
+const cookieParser = require("cookie-parser");
 const dotenv = require("dotenv");
 const app = express();
 dotenv.config();
@@ -9,6 +10,7 @@ app.set("views", "./src/views");
 app.set("view engine", "ejs");
 app.use(express.static(`${__dirname}/src/public`))
 
+app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 

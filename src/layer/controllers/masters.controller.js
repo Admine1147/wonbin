@@ -18,25 +18,55 @@ class MasterController {
   getList_orders = async (req, res) => {
     const result = await this.masterService.getList_orders();
     res.json({
-      order_list: result,
+      order_list: result.result,
+      order_img_list: result.ordersImgs
     });
   };
 
   accept_order = async (req, res) => {
     const { order_id } = req.params;
-    const master_id = 1;
+    const master_id = res.locals.master_id;
     const exist_order = await this.masterService.getOrder_byMasterId(master_id);
-    if (exist_order) {
-      return res.status(401).send('이미 할 일이 있으니 할 일이나 마저 하십쇼. 인간');
+    if (exist_order.success === true) {
+      return res.status(200).json({ message: '이미 할 일이 있으니 할 일이나 마저 하십쇼. 인간', success: false });
     }
 
     const master = await this.masterService.getMaster_byId(master_id);
     const { storename } = master;
 
-    console.log('con storename : ', storename);
     const accept_order = await this.masterService.accept_order(order_id, master_id, storename);
 
     res.json({ accept_order });
+  };
+
+  // 내가 관리중인 요청 오더
+  getOrder_manage = async (req, res) => {
+    const master_id = res.locals.master_id;
+    console.log(master_id);
+    
+    const result = await this.masterService.getOrder_byMasterId(master_id);
+    if (result.success === false) {
+      return res.json({success: false, message: "현재 담당중인 요청 없음"})
+    }
+
+    const lastResult = result.returnResult
+
+    res.json({ success: true, order: lastResult.order, img_name: lastResult.img_name });
+  };
+
+  getOrder_manageNextStep = async (req, res) => {
+    const master_id = res.locals.master_id;
+    const { order_id } = req.params;
+    const order = await this.masterService.getOrder_manageNextStep(order_id);
+
+    res.json({ order: order });
+  };
+
+  getList_review = async (req, res) => {
+    const master_id = res.locals.master_id;
+    const review = await this.masterService.getReview_byMasterId(master_id);
+
+    res.json({ review_list: review });
   };
 }
 

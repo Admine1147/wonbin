@@ -78,6 +78,10 @@ const submitRequest = async () => {
         data: {result: JSON.stringify(orderData)},
         success: function (response) {
             console.log(response.success);
+            if (response.success === undefined) {
+                alert("로그인 해 주시길 바랍니다.")
+                location.href='/main';
+            }
             if (response.success === false) {
                 alert(response.message);
                 return;
