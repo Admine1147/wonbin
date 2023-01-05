@@ -134,17 +134,31 @@
             let star = rows[i].star;
             let createdAt = rows[i].createdAt;
 
+            const star_mark = '⭐️'.repeat(star);
+
+            const createdTime = new Date(createdAt)
+            const year = createdTime.getFullYear(); 
+            const month = createdTime.getMonth() + 1;
+            const day = createdTime.getDate(); 
+            let hour = createdTime.getHours(); 
+            let minute = createdTime.getMinutes(); 
+
+             if (hour.toString().length === 1) { 
+                 hour = '0' + hour.toString() 
+             } 
+             if (minute.toString().length === 1) {
+                 minute = '0' + minute.toString() 
+             } 
+
             let temp_html = `<div class="col">
                               <div class="card h-100">
-                                <div class="order-img">
-                                  <img src="https://image.onstove.com/850x0/d3kxs6kpbh59hp.cloudfront.net/community/COMMUNITY/8eb7a6a8e9124b8d9915907a2585b98f/3b6b80769f8743b9ac853e428634f00c_1558658665.jpg" class="card-img-top" alt="..." />
-                                </div>
+                                  <div>${star_mark}</div>
                                   <div class="card-body">
                                 <h5 class="card-title">${nickname}</h5>
                                 <p class="card-text">${comment}</p>
                               </div>
                               <div class="card-footer">
-                                <small class="text-muted">${createdAt}</small>
+                                <small class="text-muted">${year}년 ${month}월 ${day}일 ${hour}시 ${minute}분</small>
                               </div>
                             </div>
                           </div>`;
