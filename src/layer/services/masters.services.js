@@ -38,11 +38,11 @@ class MasterService {
     const order_id = result.order_id
     const img_name_result = await this.orderImgsRepository.getOrderImg_byOrder(order_id);
 
-    const return_params = {
-      order: result,
-      img_name: img_name_result.img_name
+    if (!img_name_result) {
+      return {success: true, order: result, img_name: false}
     }
-    return {success: true, returnResult: return_params}
+
+    return {success: true, order: result, img_name: img_name_result.img_name}
   };
 
   getMaster_byId = async master_id => {
