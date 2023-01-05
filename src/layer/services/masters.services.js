@@ -5,10 +5,10 @@ class MasterService {
   ordersRepository = new MasterRepository(orders);
   masterRepository = new MasterRepository(masters);
   reviewRepository = new MasterRepository(order_reviews);
-  orderImgsRepository  = new MasterRepository(order_imgs);
+  orderImgsRepository = new MasterRepository(order_imgs);
 
-  getList_orders = async (page) => {
-    let pageCount = 0;  // 페이지에 따라서, pageCount번째 레코드 부터 시작해서 5개를 뽑아와라.
+  getList_orders = async (page, master_id) => {
+    let pageCount = 0; // 페이지에 따라서, pageCount번째 레코드 부터 시작해서 5개를 뽑아와라.
 
     if (page > 1) {
       pageCount = 8 * (page - 1);
@@ -17,32 +17,32 @@ class MasterService {
     const result = await this.ordersRepository.getList_orders(pageCount);
 
     if (!result.length) {
-      return {success: false, type:"none", message: "마지막 목록 입니다."};
+      return { success: false, type: 'none', message: '마지막 목록 입니다.' };
     }
 
-    const arrayOrderId = result.map((order) => {
+    const arrayOrderId = result.map(order => {
       return order.order_id;
-    })
+    });
 
     const ordersImgs = await this.orderImgsRepository.getImgList_byOrderIdArray(arrayOrderId);
 
-    return {success: true, order_list: result, order_img_list: ordersImgs};
+    return { success: true, order_list: result, order_img_list: ordersImgs };
   };
 
   // 내가 관리중인 세탁 요청건을 orders 테이블에서 가져옴
   getOrder_byMasterId = async master_id => {
     const result = await this.ordersRepository.getOrder_byMasterId(master_id);
     if (!result) {
-      return {success: false};
+      return { success: false };
     }
-    const order_id = result.order_id
+    const order_id = result.order_id;
     const img_name_result = await this.orderImgsRepository.getOrderImg_byOrder(order_id);
 
     if (!img_name_result) {
-      return {success: true, order: result, img_name: false}
+      return { success: true, order: result, img_name: false };
     }
 
-    return {success: true, order: result, img_name: img_name_result.img_name}
+    return { success: true, order: result, img_name: img_name_result.img_name };
   };
 
   getMaster_byId = async master_id => {
@@ -62,10 +62,20 @@ class MasterService {
     return accept_order;
   };
 
+  get_point = async master_id => {
+    await this.masterRepository.get_point(master_id);
+    return;
+  };
+
   getOrder_manageNextStep = async order_id => {
     const find_order = await this.ordersRepository.getOrder_byOrderId(order_id);
     const order_status = find_order.status + 1;
     const order_nextStep = await this.ordersRepository.order_nextStep(order_id, order_status);
+    const { master_id } = find_order;
+
+    if (find_order.status === 4) {
+      await this.masterRepository.get_point(master_id);
+    }
 
     return order_nextStep;
   };

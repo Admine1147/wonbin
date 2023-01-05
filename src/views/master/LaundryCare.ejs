@@ -86,6 +86,9 @@
   <body id="order-manage">
     <nav class="navbar navbar-expand-custom navbar-mainbg">
       <a class="navbar-brand navbar-logo" href="/masters">10-10-gaza</a>
+      <% const point = Number(master_point); %>
+      <div class="point">현재 포인트 : <%= point %></div>
+
       <button
         class="navbar-toggler"
         type="button"
@@ -145,7 +148,8 @@
           let img_src = '';
 
           if (!img_name) {
-            img_src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKt7ZDite8uarH2t_0xmkhpJufXePECdS1Uw&usqp=CAU"
+            img_src =
+              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKt7ZDite8uarH2t_0xmkhpJufXePECdS1Uw&usqp=CAU';
           } else {
             img_src = `/image/userRequest/user_${user_id}/order_${order_id}/${img_name}`;
           }
