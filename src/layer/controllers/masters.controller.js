@@ -60,9 +60,7 @@ class MasterController {
       return res.json({success: false, message: "현재 담당중인 요청 없음"})
     }
 
-    const lastResult = result.returnResult
-
-    res.json({ success: true, order: lastResult.order, img_name: lastResult.img_name });
+    res.status(200).json(result);
   };
 
   getOrder_manageNextStep = async (req, res) => {
