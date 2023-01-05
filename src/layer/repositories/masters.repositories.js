@@ -5,9 +5,11 @@ class MasterRepository {
     this.model = model;
   }
 
-  getList_orders = async () => {
+  getList_orders = async (pageCount) => {
     const orders_list = await this.model.findAll({
-      where: {status: 1}, order: [['order_id', 'DESC']]
+      where: {status: 1}, order: [['order_id', 'DESC']],
+      offset: pageCount,
+      limit: 8
     });
     return orders_list;
   };

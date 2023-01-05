@@ -35,7 +35,7 @@ module.exports = {
       },
       point: {
         type: Sequelize.INTEGER,
-        defaultValue: 1000000
+        defaultValue: 0
       },
       createdAt: {
         allowNull: false,

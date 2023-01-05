@@ -7,8 +7,18 @@ class MasterService {
   reviewRepository = new MasterRepository(order_reviews);
   orderImgsRepository  = new MasterRepository(order_imgs);
 
-  getList_orders = async () => {
-    const result = await this.ordersRepository.getList_orders();
+  getList_orders = async (page) => {
+    let pageCount = 0;  // 페이지에 따라서, pageCount번째 레코드 부터 시작해서 5개를 뽑아와라.
+
+    if (page > 1) {
+      pageCount = 8 * (page - 1);
+    }
+
+    const result = await this.ordersRepository.getList_orders(pageCount);
+
+    if (!result.length) {
+      return {success: false, type:"none", message: "마지막 목록 입니다."};
+    }
 
     const arrayOrderId = result.map((order) => {
       return order.order_id;
@@ -16,7 +26,7 @@ class MasterService {
 
     const ordersImgs = await this.orderImgsRepository.getImgList_byOrderIdArray(arrayOrderId);
 
-    return {result, ordersImgs};
+    return {success: true, order_list: result, order_img_list: ordersImgs};
   };
 
   // 내가 관리중인 세탁 요청건을 orders 테이블에서 가져옴
