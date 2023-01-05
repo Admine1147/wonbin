@@ -1,13 +1,12 @@
 .loader {
-  position: absolute;
-  width: 100vw;
-  top: 0vh;
-  left: 84vw;
+  position: relative;
+  width: 1000px;
+  height: 200px;
   -webkit-transform: translate(-50%, -50%);
   -moz-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   -o-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+  transform: translate(10%, -150%);
 }
 
 .loader h1 {
@@ -1501,8 +1500,7 @@ h1 {
 }
 
 .base {
-  position: absolute;
-  bottom: 20vh;
+  position: relative;
   display: grid;
   grid-template-columns: repeat(30, 1fr);
   grid-template-rows: repeat(10, 1fr);
@@ -1516,11 +1514,11 @@ h1 {
     0 4px 8px rgba(0, 0, 0, 0.07), 0 8px 16px rgba(0, 0, 0, 0.07),
     0 16px 32px rgba(0, 0, 0, 0.07), 0 32px 64px rgba(0, 0, 0, 0.07);
   cursor: pointer;
+  transform: translate(185%, 30%);
 }
 
 .base2 {
-  position: absolute;
-  bottom: 28vh;
+  position: relative;
   display: grid;
   grid-template-columns: repeat(30, 1fr);
   grid-template-rows: repeat(10, 1fr);
@@ -1534,6 +1532,7 @@ h1 {
     0 4px 8px rgba(0, 0, 0, 0.07), 0 8px 16px rgba(0, 0, 0, 0.07),
     0 16px 32px rgba(0, 0, 0, 0.07), 0 32px 64px rgba(0, 0, 0, 0.07);
   cursor: pointer;
+  transform: translate(185%, 70%);
 }
 
 i {
