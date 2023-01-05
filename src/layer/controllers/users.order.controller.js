@@ -164,9 +164,6 @@ class UserOrderController {
         const type = req.params.type;
         const page = Number(req.params.page);
         const user_id = res.locals.user_id;
-
-        console.log("페이지 잘 넘어오나?")
-        console.log(type, page);
         
         if (type !== "all" && type !== "doing" && type !== "done") {
             return res.status(400).json({success: false, message:"잘못된 타입의 목록입니다."})
@@ -184,7 +181,6 @@ class UserOrderController {
             return res.status(400).json(result);
         }
 
-        console.log("쩨에발...");
         return res.status(200).json(result);
     }
 }

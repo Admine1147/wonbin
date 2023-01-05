@@ -228,7 +228,6 @@ const infinite_scroll = () => {
                     success: function (response) {
                         if (response.success === true) {
                             const listWrap = document.querySelector("#card-wrap");
-                            const on_list_board = document.querySelector(".center-list");
                             const orderList = response.orderList;
                             const orderListThum = response.orderListThum;
                             let temp = ``;

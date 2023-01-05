@@ -86,6 +86,7 @@
         </div>
       </div> -->
     </div>
+    <div id="end-list"></div>
   </body>
   <script>
     $(document).ready(function () {
@@ -94,6 +95,10 @@
         url: '/api/orders',
         data: {},
         success: function (response) {
+          if (response.success === false) {
+            alert("요청글이 존재하지 않습니다.");
+            return
+          }
           console.log('세탁물 요청 목록 연결됨');
           let rows = response['order_list'];
           let img_rows = response["order_img_list"];
@@ -132,8 +137,12 @@
                           </div>`;
             $('#order-list').append(temp_html);
           }
+
+          if (rows.length >= 8) {
+            infinity_scroll()
+          }
         },
-      });
+      }); 
     });
 
     const order_accept = function (order_id) {
@@ -149,5 +158,87 @@
         },
       });
     };
+
+    const infinity_scroll = () => {
+      const listEnd = document.querySelector("#end-list");
+      const option = {
+        root: null,
+        rootMargin: "20px 20px 20px 20px",
+        thredhold: 0,
+      }
+      let page = 2;
+
+      const onIntersect = (entries, observer) => { 
+      // entries는 IntersectionObserverEntry 객체의 리스트로 배열 형식을 반환합니다.
+        entries.forEach(entry => {
+            if(entry.isIntersecting){
+                $.ajax({
+                    type: "GET",
+                    url: `/api/orders/page/${page}`,
+                    data: {},
+                    success: function (response) {
+                      if (response.success === false) {
+                        if (response.type === "none") {
+                          setTimeout(function () {
+                            alert(response.message)
+                          }, 200);
+                          return;
+                        }
+                        return;
+                      }
+                      let rows = response['order_list'];
+                      let img_rows = response["order_img_list"];
+                      const listWrap = document.querySelector("#order-list")
+                      let temp_html = ``;
+
+                      for (let i = 0; i < rows.length; i++) {
+                        let order_id = rows[i].order_id;
+                        let nickname = rows[i].nickname;
+                        let address = rows[i].address;
+                        let comment = rows[i].comment;
+                        let createdAt = rows[i].createdAt;
+                        let user_id = rows[i].user_id;
+                        let img_name = img_rows[order_id];
+                        let img_src = '';
+
+                        if (img_name) {
+                          img_src = `/image/userRequest/user_${user_id}/order_${order_id}/${img_name}`
+                        } else {
+                          img_src = `https://image.onstove.com/850x0/d3kxs6kpbh59hp.cloudfront.net/community/COMMUNITY/8eb7a6a8e9124b8d9915907a2585b98f/3b6b80769f8743b9ac853e428634f00c_1558658665.jpg`
+                        } 
+
+                        temp_html += `
+                          <div class="col">
+                              <div class="card h-100">
+                                <div class="order-img">
+                                  <img src=${img_src} class="card-img-top" alt="..." />
+                                </div>
+                                  <div class="card-body">
+                                <h5 class="card-title">${nickname}</h5>
+                                <p class="card-text">${comment}</p>
+                                <p class="card-text"> 요청자 주소 : ${address}</p>
+                                <a class="btn btn-primary" onclick="order_accept(${order_id})">수락하기</a>
+                              </div>
+                              <div class="card-footer">
+                                <small class="text-muted">${createdAt}</small>
+                              </div>
+                            </div>
+                          </div>`;
+                      }
+
+                      new Promise((resolve, reject) => setTimeout(function () {
+                          // 받아 온 데이터들을 for 문으로 돌려서 백틱 안에 html 태그를 작성한 뒤 이어붙인다.
+                          listWrap.insertAdjacentHTML("beforeend", temp_html);
+                          page += 1;
+                      }, 200));    
+                      
+                    }   
+                });
+            }
+        });
+      }; 
+      const observer = new IntersectionObserver(onIntersect, option);
+      observer.observe(listEnd);
+    }
   </script>
 </html>
