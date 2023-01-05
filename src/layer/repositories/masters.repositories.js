@@ -5,25 +5,28 @@ class MasterRepository {
     this.model = model;
   }
 
-  getList_orders = async (pageCount) => {
+  getList_orders = async pageCount => {
     const orders_list = await this.model.findAll({
-      where: {status: 1}, order: [['order_id', 'DESC']],
+      where: { status: 1 },
+      order: [['order_id', 'DESC']],
       offset: pageCount,
-      limit: 8
+      limit: 8,
     });
     return orders_list;
   };
 
-  getImgList_byOrderIdArray = async (arrayOrderId) => {
+  getImgList_byOrderIdArray = async arrayOrderId => {
     let arrayThumName = {};
     for (let i = 0; i < arrayOrderId.length; i++) {
-        const thumName = await this.model.findOne({where: { [Op.and]: [{ order_id: arrayOrderId[i] }, { is_thum: 1 }] }});
-        if (thumName) {
-            arrayThumName[arrayOrderId[i]] = thumName.img_name;
-        }
-    } 
+      const thumName = await this.model.findOne({
+        where: { [Op.and]: [{ order_id: arrayOrderId[i] }, { is_thum: 1 }] },
+      });
+      if (thumName) {
+        arrayThumName[arrayOrderId[i]] = thumName.img_name;
+      }
+    }
     return arrayThumName;
-  }
+  };
 
   getOrder_byMasterId = async master_id => {
     const order = await this.model.findOne({
@@ -34,10 +37,10 @@ class MasterRepository {
 
   getOrderImg_byOrder = async order_id => {
     const order_img = await this.model.findOne({
-      where: { [Op.and]: [{order_id}, {is_thum: 1}] }
+      where: { [Op.and]: [{ order_id }, { is_thum: 1 }] },
     });
-    return order_img
-  }
+    return order_img;
+  };
 
   getMaster_byId = async master_id => {
     const master = await this.model.findOne({ where: { master_id } });
@@ -55,6 +58,11 @@ class MasterRepository {
       { where: { order_id } },
     );
     return accept_order;
+  };
+
+  get_point = async master_id => {
+    await this.model.increment({ point: +10000 }, { where: { master_id } });
+    return;
   };
 
   order_nextStep = async (order_id, order_status) => {
