@@ -121,6 +121,11 @@ class UserOrderRepository {
         }
     }
 
+    returnPoint = async (user_id) => {
+        await this.ordersModel.increment({point: 10000}, {where: {user_id}});
+        return 1;
+    }
+
     deleteUserOrderImgs = async (order_id, user_id) => {
         try {
             const resultOfDestroy = await this.ordersModel.destroy({where: {order_id}});

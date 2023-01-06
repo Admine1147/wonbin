@@ -86,7 +86,7 @@ class UserOrderController {
     deleteUserOrder = async (req, res) => {
         const order_id = Number(req.params.order_id);
         const user_id = res.locals.user_id;
-        const result = await this.userOrderService.deleteUserOrder(order_id);
+        const result = await this.userOrderService.deleteUserOrder(order_id, user_id);
         const result2 = await this.userOrderService.deleteuUserOrderImg(order_id, user_id); 
 
         if (result === false) {
