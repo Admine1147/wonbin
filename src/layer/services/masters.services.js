@@ -25,6 +25,8 @@ class MasterService {
     });
 
     const ordersImgs = await this.orderImgsRepository.getImgList_byOrderIdArray(arrayOrderId);
+    console.log("~~~~~~~");
+    console.log(ordersImgs);
 
     return { success: true, order_list: result, order_img_list: ordersImgs };
   };

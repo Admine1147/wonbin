@@ -192,6 +192,20 @@
                   let img_name = img_rows[order_id];
                   let img_src = '';
 
+                  const createdTime = new Date(createdAt);
+                  const year = createdTime.getFullYear();
+                  const month = createdTime.getMonth() + 1;
+                  const day = createdTime.getDate();
+                  let hour = createdTime.getHours();
+                  let minute = createdTime.getMinutes();
+
+                  if (hour.toString().length === 1) {
+                    hour = '0' + hour.toString();
+                  }
+                  if (minute.toString().length === 1) {
+                    minute = '0' + minute.toString();
+                  }
+
                   if (img_name) {
                     img_src = `/image/userRequest/user_${user_id}/order_${order_id}/${img_name}`;
                   } else {
