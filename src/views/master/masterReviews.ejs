@@ -29,56 +29,6 @@
     <link rel="stylesheet" href="/css/master/masterReviews.css" />
     <script src="/js/master/main.js" defer></script>
     <title>세탁물 관리</title>
-    <style type="text/css">
-      .tg {
-        border-collapse: collapse;
-        border-color: #9abad9;
-        border-spacing: 0;
-      }
-
-      .tg td {
-        background-color: #ebf5ff;
-        border-color: #9abad9;
-        border-style: solid;
-        border-width: 1px;
-        color: #444;
-        font-family: Arial, sans-serif;
-        font-size: 14px;
-        overflow: hidden;
-        padding: 10px 5px;
-        word-break: normal;
-      }
-      .tg th {
-        background-color: #409cff;
-        border-color: #9abad9;
-        border-style: solid;
-        border-width: 1px;
-        color: #fff;
-        font-family: Arial, sans-serif;
-        font-size: 30px;
-        font-weight: normal;
-        overflow: hidden;
-        padding: 10px 5px;
-        word-break: normal;
-      }
-      .tg .tg-c3ow {
-        border-color: inherit;
-        text-align: center;
-        vertical-align: top;
-        font-size: 30px;
-        width: 150px;
-      }
-      .tg .tg-9d8n {
-        border-color: inherit;
-        font-size: 22px;
-        text-align: center;
-        vertical-align: top;
-      }
-      div {
-        width: 100%;
-        height: auto;
-      }
-    </style>
   </head>
   <body>
     <nav class="navbar navbar-expand-custom navbar-mainbg">
@@ -110,7 +60,7 @@
         </ul>
       </div>
     </nav>
-    <div class="row row-cols-1 row-cols-md-3 g-4" id="review-list"></div>
+    <ol class="articles" id="review-list"></ol>
   </body>
   <script>
     $(document).ready(function () {
@@ -144,18 +94,26 @@
               minute = '0' + minute.toString();
             }
 
-            let temp_html = `<div class="col">
-                              <div class="card h-100">
-                                  <div>${star_mark}</div>
-                                  <div class="card-body">
-                                <h5 class="card-title">${nickname}</h5>
-                                <p class="card-text">${comment}</p>
-                              </div>
-                              <div class="card-footer">
-                                <small class="text-muted">${year}년 ${month}월 ${day}일 ${hour}시 ${minute}분</small>
-                              </div>
-                            </div>
-                          </div>`;
+            let temp_html = `      <li class="articles__article" style="--animation-order: 1">
+        <a class="articles__link">
+          <div class="articles__content articles__content--lhs">
+            <h2 class="articles__title">${star_mark}</h2>
+            <h2 class="articles__title">${comment}</h2>
+            <div class="articles__footer">
+              <p>${nickname}</p>
+              <time>${year}년 ${month}월 ${day}일 ${hour}시 ${minute}분</time>
+            </div>
+          </div>
+          <div class="articles__content articles__content--rhs" aria-hidden="true">
+            <h2 class="articles__title">${star_mark}</h2>
+            <h2 class="articles__title">${comment}</h2>
+            <div class="articles__footer">
+              <p>${nickname}</p>
+              <time>${year}년 ${month}월 ${day}일 ${hour}시 ${minute}분</time>
+            </div>
+          </div></a
+        >
+      </li>`;
             $('#review-list').append(temp_html);
           }
         },
