@@ -149,7 +149,7 @@ class UserOrderService {
         
     }
 
-    deleteUserOrder = async (order_id) => {
+    deleteUserOrder = async (order_id, user_id) => {
         const checkOrder_id = Number.isNaN(order_id);
         try {
             if (checkOrder_id) {
@@ -170,6 +170,8 @@ class UserOrderService {
             if (result !== 1) {
                 return false;
             }
+            const returnPoint = await this.usersModel.returnPoint(user_id);
+
             return true;
             
         } catch (err) {
