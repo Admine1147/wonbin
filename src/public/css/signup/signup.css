@@ -2,13 +2,13 @@
 @import url(//fonts.googleapis.com/css?family=Lato:300:400);
 
 h1 {
-  font-family: "Lato", sans-serif;
+  font-family: 'Lato', sans-serif;
   font-weight: 300;
   letter-spacing: 2px;
   font-size: 48px;
 }
 p {
-  font-family: "Lato", sans-serif;
+  font-family: 'Lato', sans-serif;
   letter-spacing: 1px;
   font-size: 14px;
   color: #333333;
@@ -127,9 +127,7 @@ button {
   background: #9dcef3;
   border: none;
   border-radius: 10px;
-  box-shadow: 0px 10px 25px #57aba7, 0px -10px 25px #a6fffa,
-    inset 0px -5px 10px #57aba7, inset 0px 5px 10px #a6fffa;
-  font-family: "Damion", cursive;
+  box-shadow: 0px 10px 25px #57aba7, 0px -10px 25px #a6fffa, inset 0px -5px 10px #57aba7, inset 0px 5px 10px #a6fffa;
   color: white;
   font-size: 20px;
   transition: 500ms;

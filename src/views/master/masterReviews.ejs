@@ -82,17 +82,11 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-custom navbar-mainbg">
-      <a class="navbar-brand navbar-logo" href="/masters">10-10-gaza</a>
+      <a class="navbar-brand navbar-logo" href="/masters">10-10 Laundry</a>
       <% const point = Number(master_point); %>
       <div class="point">현재 포인트 : <%= point %></div>
 
-      <button
-        class="navbar-toggler"
-        type="button"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
+      <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fas fa-bars text-white"></i>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -136,19 +130,19 @@
 
             const star_mark = '⭐️'.repeat(star);
 
-            const createdTime = new Date(createdAt)
-            const year = createdTime.getFullYear(); 
+            const createdTime = new Date(createdAt);
+            const year = createdTime.getFullYear();
             const month = createdTime.getMonth() + 1;
-            const day = createdTime.getDate(); 
-            let hour = createdTime.getHours(); 
-            let minute = createdTime.getMinutes(); 
+            const day = createdTime.getDate();
+            let hour = createdTime.getHours();
+            let minute = createdTime.getMinutes();
 
-             if (hour.toString().length === 1) { 
-                 hour = '0' + hour.toString() 
-             } 
-             if (minute.toString().length === 1) {
-                 minute = '0' + minute.toString() 
-             } 
+            if (hour.toString().length === 1) {
+              hour = '0' + hour.toString();
+            }
+            if (minute.toString().length === 1) {
+              minute = '0' + minute.toString();
+            }
 
             let temp_html = `<div class="col">
                               <div class="card h-100">

@@ -10,6 +10,9 @@ body {
 i {
   margin-right: 10px;
 }
+nav {
+  z-index: 999;
+}
 .navbar-logo {
   padding: 15px;
   color: #fff;

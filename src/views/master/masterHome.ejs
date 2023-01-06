@@ -33,16 +33,10 @@
 
   <body>
     <nav class="navbar navbar-expand-custom navbar-mainbg">
-      <a class="navbar-brand navbar-logo" href="/masters">10-10-gaza</a>
+      <a class="navbar-brand navbar-logo" href="/masters">10-10 Laundry</a>
       <% const point = Number(master_point); %>
       <div class="point">현재 포인트 : <%= point %></div>
-      <button
-        class="navbar-toggler"
-        type="button"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
+      <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fas fa-bars text-white"></i>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -66,28 +60,7 @@
         </ul>
       </div>
     </nav>
-
-    <div class="row row-cols-1 row-cols-md-3 g-4" id="order-list">
-      <!-- <div class="col">
-        <div class="card h-100">
-          <div class="order-img">
-            <img
-              src="https://image.onstove.com/850x0/d3kxs6kpbh59hp.cloudfront.net/community/COMMUNITY/8eb7a6a8e9124b8d9915907a2585b98f/3b6b80769f8743b9ac853e428634f00c_1558658665.jpg"
-              class="card-img-top"
-              alt="..."
-            />
-          </div>
-          <div class="card-body">
-            <h5 class="card-title">닉네임</h5>
-            <p class="card-text">코멘트</p>
-            <a class="btn btn-primary" onclick="">수락하기</a>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">${createdAt}</small>
-          </div>
-        </div>
-      </div> -->
-    </div>
+    <div class="body"><div class="container" id="order-list"></div></div>
     <div id="end-list"></div>
   </body>
   <script>
@@ -111,6 +84,20 @@
             let address = rows[i].address;
             let comment = rows[i].comment;
             let createdAt = rows[i].createdAt;
+
+            const createdTime = new Date(createdAt);
+            const year = createdTime.getFullYear();
+            const month = createdTime.getMonth() + 1;
+            const day = createdTime.getDate();
+            let hour = createdTime.getHours();
+            let minute = createdTime.getMinutes();
+
+            if (hour.toString().length === 1) {
+              hour = '0' + hour.toString();
+            }
+            if (minute.toString().length === 1) {
+              minute = '0' + minute.toString();
+            }
             let user_id = rows[i].user_id;
             let img_name = img_rows[order_id];
             let img_src = '';
@@ -122,22 +109,23 @@
               img_src = `/image/publicImg.jpg`;
             }
 
-            let temp_html = `<div class="col">
-                              <div class="card h-100">
-                                <div class="order-img">
-                                  <img src=${img_src} class="card-img-top" alt="..." />
-                                </div>
-                                  <div class="card-body">
-                                <h5 class="card-title">${nickname}</h5>
-                                <p class="card-text">${comment}</p>
-                                <p class="card-text"> 요청자 주소 : ${address}</p>
-                                <a class="btn btn-primary" onclick="order_accept(${order_id})">수락하기</a>
-                              </div>
-                              <div class="card-footer">
-                                <small class="text-muted">${createdAt}</small>
-                              </div>
-                            </div>
-                          </div>`;
+            let temp_html = ` <div class="card">
+                              <figure class="card__thumb">
+                                <img
+                                  src="${img_src}"
+                                  alt="Picture by Kyle Cottrell"
+                                  class="card__image"
+                                />
+                                <figcaption class="card__caption">
+                                <h2 class="card__title">${nickname}</h2>
+                                      <p class="card__snippet">${address}</p>
+                                      <p class="card__snippet">${year}년 ${month}월 ${day}일 ${hour}시 ${minute}분</p>
+                                      <p class="card__snippet">${comment}</p>
+                                      <a class="card__button" onclick="order_accept(${order_id})">수락하기</a>
+                                    </figcaption>
+                                  </figure>
+                                </div>`;
+
             $('#order-list').append(temp_html);
           }
 
@@ -210,23 +198,22 @@
                     img_src = `/image/publicImg.jpg`;
                   }
 
-                  temp_html += `
-                          <div class="col">
-                              <div class="card h-100">
-                                <div class="order-img">
-                                  <img src=${img_src} class="card-img-top" alt="..." />
-                                </div>
-                                  <div class="card-body">
-                                <h5 class="card-title">${nickname}</h5>
-                                <p class="card-text">${comment}</p>
-                                <p class="card-text"> 요청자 주소 : ${address}</p>
-                                <a class="btn btn-primary" onclick="order_accept(${order_id})">수락하기</a>
-                              </div>
-                              <div class="card-footer">
-                                <small class="text-muted">${createdAt}</small>
-                              </div>
-                            </div>
-                          </div>`;
+                  temp_html += ` <div class="card">
+                              <figure class="card__thumb">
+                                <img
+                                  src="${img_src}"
+                                  alt="Picture by Kyle Cottrell"
+                                  class="card__image"
+                                />
+                                <figcaption class="card__caption">
+                                <h2 class="card__title">${nickname}</h2>
+                                      <p class="card__snippet">${address}</p>
+                                      <p class="card__snippet">${year}년 ${month}월 ${day}일 ${hour}시 ${minute}분</p>
+                                      <p class="card__snippet">${comment}</p>
+                                      <a class="card__button" onclick="order_accept(${order_id})">수락하기</a>
+                                    </figcaption>
+                                  </figure>
+                                </div>`;
                 }
 
                 new Promise((resolve, reject) =>

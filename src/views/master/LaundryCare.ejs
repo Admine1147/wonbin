@@ -26,76 +26,16 @@
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="/css/master/masterHome.css" />
+    <link rel="stylesheet" href="/css/master/LaundryCare.css" />
     <script src="/js/master/main.js" defer></script>
     <title>세탁물 관리</title>
-    <style type="text/css">
-      .tg {
-        border-collapse: collapse;
-        border-color: #9abad9;
-        border-spacing: 0;
-      }
-
-      .tg td {
-        background-color: #ebf5ff;
-        border-color: #9abad9;
-        border-style: solid;
-        border-width: 1px;
-        color: #444;
-        font-family: Arial, sans-serif;
-        font-size: 14px;
-        overflow: hidden;
-        padding: 10px 5px;
-        word-break: normal;
-      }
-      .tg th {
-        background-color: #409cff;
-        border-color: #9abad9;
-        border-style: solid;
-        border-width: 1px;
-        color: #fff;
-        font-family: Arial, sans-serif;
-        font-size: 30px;
-        font-weight: normal;
-        overflow: hidden;
-        padding: 10px 5px;
-        word-break: normal;
-      }
-      .tg .tg-c3ow {
-        border-color: inherit;
-        text-align: center;
-        vertical-align: top;
-        font-size: 30px;
-        width: 150px;
-      }
-      .tg .tg-9d8n {
-        border-color: inherit;
-        font-size: 22px;
-        text-align: center;
-        vertical-align: top;
-      }
-      div {
-        width: 100%;
-        height: auto;
-      }
-      .btn {
-        height: 50px;
-      }
-    </style>
   </head>
   <body id="order-manage">
     <nav class="navbar navbar-expand-custom navbar-mainbg">
-      <a class="navbar-brand navbar-logo" href="/masters">10-10-gaza</a>
+      <a class="navbar-brand navbar-logo" href="/masters">10-10 Laundry</a>
       <% const point = Number(master_point); %>
       <div class="point">현재 포인트 : <%= point %></div>
-
-      <button
-        class="navbar-toggler"
-        type="button"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
+      <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fas fa-bars text-white"></i>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -119,6 +59,7 @@
         </ul>
       </div>
     </nav>
+    <div id="order-manage"></div>
   </body>
   <script>
     $(document).ready(function () {
@@ -148,8 +89,7 @@
           let img_src = '';
 
           if (!img_name) {
-            img_src =
-              '/image/publicImg.jpg';
+            img_src = '/image/publicImg.jpg';
           } else {
             img_src = `/image/userRequest/user_${user_id}/order_${order_id}/${img_name}`;
           }
@@ -171,58 +111,26 @@
               break;
           }
 
-          let temp_html = `<table class="tg" style="margin-left: auto; margin-right: auto; margin-top: 200px; margin-bottom: 200px;">
-                              <colgroup>
-                                <col style="width: 80px" />
-                                <col style="width: 80px" />
-                                <col style="width: 80px" />
-                                <col style="width: 67px" />
-                              </colgroup>
-                              <thead>
-                                <tr>
-                                  <th class="tg-c3ow" colspan="4">세탁 받은 목록</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr>
-                                  <td class="tg-c3ow">닉네임</td>
-                                  <td class="tg-c3ow" colspan="3">${nickname}</td>
-                                </tr>
-                                <tr>
-                                  <td class="tg-c3ow">폰번호</td>
-                                  <td class="tg-c3ow" colspan="3">${phonenumber}</td>
-                                </tr>
-                                <tr>
-                                  <td class="tg-c3ow">주소</td>
-                                  <td class="tg-c3ow" colspan="3">${address}</td>
-                                </tr>
-                                <tr>
-                                  <td class="tg-9d8n" colspan="4" rowspan="6">
-                                    <div>
-                                      <img
-                                        src="${img_src}"
-                                      />
-                                    </div>
-                                  </td>
-                                </tr>
-                                <tr></tr>
-                                <tr></tr>
-                                <tr></tr>
-                                <tr></tr>
-                                <tr></tr>
-                                <tr>
-                                  <td class="tg-c3ow" colspan="4" rowspan="2">${comment}</td>
-                                </tr>
-                                <tr></tr>
-                                <tr>
-                                  <td class="tg-c3ow" colspan="2" rowspan="1">${nowStep}</td>
-                                  <td class="tg-c3ow" colspan="2" rowspan="1">
-                                    <button class="btn" onclick="nextStep(${order_id})">
-                                      ${nextStep}
-                                    </button></td>
-                                  </tr>
-                                </tbody>
-                              </table>`;
+          let temp_html = `<div class="card-container">
+                            <div class="card u-clearfix">
+                              <img
+                                src="${img_src}"
+                                alt=""
+                                class="card-media"
+                              />
+                              <div class="card-body">
+                                <h2 class="card-title">손님 : ${nickname}</h2>
+                                <span class="card-author subtle">주소 : ${address}</span>
+                                <span class="card-author subtle">전화번호 : ${phonenumber}</span>
+                                <span class="card-description subtle">요청사항 : ${comment}</span>
+                                <span class="card-author subtle">현재상태 : ${nowStep}</span>
+                                <div class="card-read" onclick="nextStep(${order_id})">
+                                  ${nextStep}
+                                </div>
+                              </div>
+                            </div>
+                            <div class="card-shadow"></div>
+                          </div>`;
           $('#order-manage').append(temp_html);
         },
       });
